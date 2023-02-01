@@ -17,17 +17,14 @@ router.get("/", async (req, res) => {
     }
 });
 
-// About page route.
-router.get("/about", async (req, res) => {
+// Home page route.
+router.get("/listar-personas", async (req, res) => {
     try {
-        await callbacks.about(req, res)
+        await callbacks.personas.listar(req, res)
     } catch (error) {
         console.log(error);
     }
 });
-
-
-
 
 // Exporto el módulo para poder usarlo en server
 module.exports = router;

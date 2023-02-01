@@ -1,13 +1,13 @@
 /**
  * Funciones en javascript para el cliente
  */
-const SERVER = "http://localhost"
+const API_GATEWAY = "http://localhost"
 const PORT = "8001"
 
 const DIV_LISTADO = "listado"
 
 async function recuperaPersonas(callBackFn) {
-    const url = SERVER + ":" + PORT + "/getPersonas"
+    const url = API_GATEWAY + ":" + PORT + "/personas/getAll"
     const response = await fetch(url);
     const vectorPersonas = await response.json()
     callBackFn(vectorPersonas.data)
