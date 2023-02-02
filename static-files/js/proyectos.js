@@ -2,12 +2,12 @@
  * Funciones en javascript para el cliente
  */
 const SERVER = "http://localhost"
-const PORT = "8002"
+const PORT = "8003"
 
 const DIV_LISTADO = "listado"
 
 async function recuperaProyectos(callBackFn) {
-    const url = SERVER + ":" + PORT + "/getProyectos"
+    const url = SERVER + ":" + PORT + "/getTodos"
     const response = await fetch(url);
     const vectorProyectos = await response.json()
     callBackFn(vectorProyectos.data)
@@ -15,7 +15,7 @@ async function recuperaProyectos(callBackFn) {
 
 
 async function recuperaProyectosConPersonas(callBackFn) {
-    const url = SERVER + ":" + PORT + "/getProyectosConPersonas"
+    const url = SERVER + ":" + PORT + "/getTodosConPersonas"
     const response = await fetch(url);
     const vectorProyectos = await response.json()
     callBackFn(vectorProyectos.data)

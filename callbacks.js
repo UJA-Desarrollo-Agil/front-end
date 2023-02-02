@@ -47,6 +47,38 @@ const CB_PERSONAS = {
         },
     }
 } 
+
+const CB_PROYECTOS = {
+    proyectos: {
+        listar: async (req, res) => {
+            try {
+                CORS(res).res.sendFile("/listar-proyectos.html",
+                    SEND_FILE_OPTIONS,
+                    function (err) {
+                        if (err) {
+                            console.error(err);
+                        }
+                    })
+            } catch (error) {
+                res.status(500).json({ error: error.description })
+            }
+        },
+        proyectosConPersonas: async (req, res) => {
+            try {
+                CORS(res).res.sendFile("/listar-proyectos-con-personas.html",
+                    SEND_FILE_OPTIONS,
+                    function (err) {
+                        if (err) {
+                            console.error(err);
+                        }
+                    })
+            } catch (error) {
+                res.status(500).json({ error: error.description })
+            }
+        },
+    },
+
+} 
 // Une todos los callbacks en un solo objeto.
 // OJO: No debe haber callbacks con el mismo nombre en los distintos objetos, porque si no
 // el último que haya sobreescribe a todos los anteriores.
