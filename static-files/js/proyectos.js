@@ -113,7 +113,7 @@ function imprimeProyectos(vector) {
 // Función que muestra todo el listado de proyectos en pantalla incluyendo las personas que trabajan en él.
 function imprimeProyectosConPersonas(vector) {
     const div = document.getElementById(DIV_LISTADO);
-    console.log( vector ) // Para comprobar lo que hay en vector
+    //console.log( vector ) // Para comprobar lo que hay en vector
     let msj="";
     msj+= eval(FN_CABECERA)();
     vector.forEach(e => msj += eval(FN_ProyectoConPersonas)(e))
