@@ -28,7 +28,7 @@ async function recuperaProyectos(callBackFn) {
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 async function recuperaProyectosConPersonas(callBackFn) {
-    const url = SERVER + ":" + PORT + "/getTodosConPersonas"
+    const url = SERVER  + "/getTodosConPersonas"
     const response = await fetch(url);
     const vectorProyectos = await response.json()
     callBackFn(vectorProyectos.data)
@@ -128,8 +128,9 @@ function proyectoConPersonasTR( p ) {
     const ini=d.inicio;
     const fin=d.final;
     const presupuesto=(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(d.presupuesto));
+    let msj= eval(FN_CABECERA)();
 
-    return `<tr title="${p.ref['@ref'].id}">
+    msj+=`<tr title="${p.ref['@ref'].id}">
     <td>${d.alias}</td>
     <td><em>${d.nombre}</em></td>
     <td>${presupuesto}</td>
@@ -139,6 +140,8 @@ function proyectoConPersonasTR( p ) {
     <tr><th colspan="5">Personas</th></tr>
     <tr><td colspan="5">${d.datos_personas.map(e=>e.data.nombre).join()}</td></tr>
     `;
+    msj+=eval(FN_PIE)();
+    return msj;
 }
 
 /**
@@ -176,9 +179,7 @@ function imprimeProyectosConPersonas(vector) {
     const div = document.getElementById(DIV_LISTADO);
     //console.log( vector ) // Para comprobar lo que hay en vector
     let msj="";
-    msj+= eval(FN_CABECERA)();
     vector.forEach(e => msj += eval(FN_ProyectoConPersonas)(e))
-    msj += eval(FN_PIE)();
     div.innerHTML=msj;
 }
 
