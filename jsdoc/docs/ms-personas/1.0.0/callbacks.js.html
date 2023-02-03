@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: callbacks.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: callbacks.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @file callbacks.js - callbacks para ms personas
+ * @description Los callbacks son las funciones que se llaman cada vez que se recibe una petición a través de la API.
+ *               Las peticiones se reciben en las rutas definidas en routes.js, pero se procesan aquí.
+ * @author Víctor M. Rivas &lt;vrivas@ujaen.es>
+ * @date 03-feb-2023
+ */
+
+
+
+// Necesario para conectar a la BBDD faunadb
+const faunadb = require('faunadb'),
+    q = faunadb.query;
+
+const client = new faunadb.Client({
+    secret: 'fnAE6dR1GVAA1qiaRxaSZtbA7yGo6OpT2cB5NQnb',
+});
+
+// CALLBACKS DEL MODELO
+
+/**
+ * Función que permite servir llamadas sin importar el origen:
+ * CORS significa Cross-Origin Resource Sharing
+ * Dado un objeto de tipo respuesta, le añade las cabeceras necesarias para realizar CROS
+ * @param {*} res Objeto de tipo response 
+ * @returns Devuelve el mismo objeto para concatenar varias llamadas al mismo
+ */
+function CORS(res) {
+    res.header('Access-Control-Allow-Origin', '*')
+        .header(
+            'Access-Control-Allow-Headers',
+            'Origin, X-Requested-With, Content-Type, Accept'
+        )
+    return res;
+}
+
+
+/**
+ * Objeto que contiene las funciones callback para interactuar con el modelo (e.d., la BBDD)
+ */
+const CB_MODEL_SELECTS = {
+    /**
+     * Prueba de conexión a la BBDD: devuelve todas las personas que haya en la BBDD.
+     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
+     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
+     */
+    test_db: async (req, res) => {
+        try {
+            let personas = await client.query(
+                q.Map(
+                    q.Paginate(q.Documents(q.Collection("Personas"))),
+                    q.Lambda("X", q.Get(q.Var("X")))
+                )
+            )
+            res.status(200).json(personas)
+        } catch (error) {
+            res.status(500).json({ error: error.description })
+        }
+    },
+
+    /**
+     * Método para obtener todas las personas de la BBDD.
+     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
+     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
+     */
+    getTodas: async (req, res) => {
+        try {
+            let personas = await client.query(
+                q.Map(
+                    q.Paginate(q.Documents(q.Collection("Personas"))),
+                    q.Lambda("X", q.Get(q.Var("X")))
+                )
+            )
+            // console.log( personas ) // Para comprobar qué se ha devuelto en personas
+            CORS(res)
+                .status(200)
+                .json(personas)
+        } catch (error) {
+            res.status(500).json({ error: error.description })
+        }
+    },
+}
+
+
+
+// CALLBACKS ADICIONALES
+
+/**
+ * Callbacks adicionales. Fundamentalmente para comprobar que el ms funciona.
+ */
+const CB_OTHERS = {
+    /**
+     * Devuelve un mensaje indicando que se ha accedido a la home del microservicio
+     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
+     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
+     */
+    home: async (req, res) => {
+        try {
+            res.status(200).json({ mensaje: "Microservicio Personas: home" });
+        } catch (error) {
+            res.status(500).json({ error: error.description })
+        }
+    },
+
+    /**
+     * Devuelve un mensaje indicando que se ha accedido a la información Acerca De del microservicio
+     * @param {*} req Objeto con los parámetros que se han pasado en la llamada a esta URL 
+     * @param {*} res Objeto Response con las respuesta que se va a dar a la petición recibida
+     */
+    acercaDe: async (req, res) => {
+        try {
+            res.status(200).json({
+                mensaje: "Microservicio Personas: acerca de",
+                autor: "Víctor Manuel Rivas Santos",
+                email: "vrivas@ujaen.es",
+                fecha: "febrero, 2023"
+            });
+        } catch (error) {
+            res.status(500).json({ error: error.description })
+        }
+    },
+
+}
+
+// Une todos los callbacks en un solo objeto para poder exportarlos.
+// MUY IMPORTANTE: No debe haber callbacks con el mismo nombre en los distintos objetos, porque si no
+//                 el último que haya SOBREESCRIBE a todos los anteriores.
+exports.callbacks = { ...CB_MODEL_SELECTS, ...CB_OTHERS }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CB_MODEL_SELECTS">CB_MODEL_SELECTS</a></li><li><a href="global.html#CB_OTHERS">CB_OTHERS</a></li><li><a href="global.html#CORS">CORS</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Feb 03 2023 11:11:02 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
