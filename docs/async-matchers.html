@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: async-matchers</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: async-matchers</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>async-matchers</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">Asynchronous matchers that operate on an actual value which is a promise,
+and return a promise.
+
+Most async matchers will wait indefinitely for the promise to be resolved
+or rejected, resulting in a spec timeout if that never happens. If you
+expect that the promise will already be resolved or rejected at the time
+the matcher is called, you can use the <a href="async-matchers.html#already">async-matchers#already</a>
+modifier to get a faster failure with a more helpful message.
+
+Note: Specs must await the result of each async matcher, return the
+promise returned by the matcher, or return a promise that's derived from
+the one returned by the matcher. Otherwise the matcher will not be
+evaluated before the spec completes.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line3619">line 3619</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+            <h3>Examples</h3>
+            
+    <pre class="prettyprint"><code>// Good
+await expectAsync(aPromise).toBeResolved();</code></pre>
+
+    <pre class="prettyprint"><code>// Good
+return expectAsync(aPromise).toBeResolved();</code></pre>
+
+    <pre class="prettyprint"><code>// Good
+return expectAsync(aPromise).toBeResolved()
+ .then(function() {
+   // more spec code
+ });</code></pre>
+
+    <pre class="prettyprint"><code>// Bad
+expectAsync(aPromise).toBeResolved();</code></pre>
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="already"><span class="type-signature"></span>already<span class="type-signature"> :<a href="async-matchers.html">async-matchers</a></span></h4>
+
+
+
+
+<div class="description">
+    Fail as soon as possible if the actual is pending.
+Otherwise evaluate the matcher.
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="async-matchers.html">async-matchers</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.8.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line3691">line 3691</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>await expectAsync(myPromise).already.toBeResolved();</code></pre>
+
+    <pre class="prettyprint"><code>return expectAsync(myPromise).already.toBeResolved();</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="not"><span class="type-signature"></span>not<span class="type-signature"> :<a href="async-matchers.html">async-matchers</a></span></h4>
+
+
+
+
+<div class="description">
+    Invert the matcher following this <a href="global.html#expectAsync">expectAsync</a>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="async-matchers.html">async-matchers</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line3675">line 3675</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>await expectAsync(myPromise).not.toBeResolved();</code></pre>
+
+    <pre class="prettyprint"><code>return expectAsync(myPromise).not.toBeResolved();</code></pre>
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toBePending"><span class="type-signature">(async) </span>toBePending<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Expect a promise to be pending, i.e. the promise is neither resolved nor rejected.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.6</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line4152">line 4152</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>await expectAsync(aPromise).toBePending();</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toBeRejected"><span class="type-signature">(async) </span>toBeRejected<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Expect a promise to be rejected.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line4182">line 4182</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>await expectAsync(aPromise).toBeRejected();</code></pre>
+
+    <pre class="prettyprint"><code>return expectAsync(aPromise).toBeRejected();</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toBeRejectedWith"><span class="type-signature">(async) </span>toBeRejectedWith<span class="signature">(expected)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Expect a promise to be rejected with a value equal to the expected, using deep equality comparison.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Value that the promise is expected to be rejected with</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.3.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line4213">line 4213</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>await expectAsync(aPromise).toBeRejectedWith({prop: 'value'});</code></pre>
+
+    <pre class="prettyprint"><code>return expectAsync(aPromise).toBeRejectedWith({prop: 'value'});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toBeRejectedWithError"><span class="type-signature">(async) </span>toBeRejectedWithError<span class="signature">(expected<span class="signature-attributes">opt</span>, message<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Expect a promise to be rejected with a value matched to the expected
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Error</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">`Error` constructor the object that was thrown needs to be an instance of. If not provided, `Error` will be used.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The message that should be set on the thrown `Error`</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.5.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line4274">line 4274</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>await expectAsync(aPromise).toBeRejectedWithError(MyCustomError, 'Error message');
+await expectAsync(aPromise).toBeRejectedWithError(MyCustomError, /Error message/);
+await expectAsync(aPromise).toBeRejectedWithError(MyCustomError);
+await expectAsync(aPromise).toBeRejectedWithError('Error message');
+return expectAsync(aPromise).toBeRejectedWithError(/Error message/);</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toBeResolved"><span class="type-signature">(async) </span>toBeResolved<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Expect a promise to be resolved.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line4397">line 4397</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>await expectAsync(aPromise).toBeResolved();</code></pre>
+
+    <pre class="prettyprint"><code>return expectAsync(aPromise).toBeResolved();</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="toBeResolvedTo"><span class="type-signature">(async) </span>toBeResolvedTo<span class="signature">(expected)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Expect a promise to be resolved to a value equal to the expected, using deep equality comparison.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Value that the promise is expected to resolve to</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line4436">line 4436</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>await expectAsync(aPromise).toBeResolvedTo({prop: 'value'});</code></pre>
+
+    <pre class="prettyprint"><code>return expectAsync(aPromise).toBeResolvedTo({prop: 'value'});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="withContext"><span class="type-signature"></span>withContext<span class="signature">(message)</span><span class="type-signature"> &rarr; {<a href="async-matchers.html">async-matchers</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add some context for an <a href="global.html#expectAsync">expectAsync</a>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Additional context to show when the async matcher fails</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.3.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line3663">line 3663</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="async-matchers.html">async-matchers</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Spy_calls.html">calls</a></li><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li></ul><h3>Classes</h3><ul><li><a href="Clock_.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="Spy.html">Spy</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#imprimePersonas">imprimePersonas</a></li><li><a href="global.html#imprimeProyectos">imprimeProyectos</a></li><li><a href="global.html#imprimeProyectosConPersonas">imprimeProyectosConPersonas</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#main_listar">main_listar</a></li><li><a href="global.html#main_listarConPersonas">main_listarConPersonas</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#personaDIV">personaDIV</a></li><li><a href="global.html#personaTR">personaTR</a></li><li><a href="global.html#personasCabeceraDIV">personasCabeceraDIV</a></li><li><a href="global.html#personasCabeceraTABLE">personasCabeceraTABLE</a></li><li><a href="global.html#personasPieDIV">personasPieDIV</a></li><li><a href="global.html#personasPieTABLE">personasPieTABLE</a></li><li><a href="global.html#proyectoConPersonasTR">proyectoConPersonasTR</a></li><li><a href="global.html#proyectoDIV">proyectoDIV</a></li><li><a href="global.html#proyectoTR">proyectoTR</a></li><li><a href="global.html#proyectosCabeceraDIV">proyectosCabeceraDIV</a></li><li><a href="global.html#proyectosCabeceraTABLE">proyectosCabeceraTABLE</a></li><li><a href="global.html#proyectosPieDIV">proyectosPieDIV</a></li><li><a href="global.html#proyectosPieTABLE">proyectosPieTABLE</a></li><li><a href="global.html#recuperaPersonas">recuperaPersonas</a></li><li><a href="global.html#recuperaProyectos">recuperaProyectos</a></li><li><a href="global.html#recuperaProyectosConPersonas">recuperaProyectosConPersonas</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Feb 03 2023 11:50:34 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

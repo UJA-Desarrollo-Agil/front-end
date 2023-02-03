@@ -1,0 +1,4206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Namespace: jasmine</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Namespace: jasmine</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>jasmine</h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8115">line 8115</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".DEFAULT_TIMEOUT_INTERVAL"><span class="type-signature">(static) </span>DEFAULT_TIMEOUT_INTERVAL<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Default number of milliseconds Jasmine will wait for an asynchronous spec,
+before, or after function to complete. This can be overridden on a case by
+case basis by passing a time limit as the third argument to <a href="global.html#it">it</a>,
+<a href="global.html#beforeEach">beforeEach</a>, <a href="global.html#afterEach">afterEach</a>, <a href="global.html#beforeAll">beforeAll</a>, or
+<a href="global.html#afterAll">afterAll</a>. The value must be no greater than the largest number of
+milliseconds supported by setTimeout, which is usually 2147483647.
+
+While debugging tests, you may want to set this to a large number (or pass
+a large number to one of the functions mentioned above) so that Jasmine
+does not move on to after functions or the next spec while you're debugging.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.3.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>5000</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line200">line 200</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".MAX_PRETTY_PRINT_ARRAY_LENGTH"><span class="type-signature">(static) </span>MAX_PRETTY_PRINT_ARRAY_LENGTH<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Maximum number of array elements to display when pretty printing objects.
+This will also limit the number of keys and values displayed for an object.
+Elements past this number will be ellipised.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.7.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>50</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line183">line 183</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".MAX_PRETTY_PRINT_CHARS"><span class="type-signature">(static) </span>MAX_PRETTY_PRINT_CHARS<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Maximum number of characters to display when pretty printing objects.
+Characters past this number will be ellipised.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.9.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>100</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line192">line 192</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id=".MAX_PRETTY_PRINT_DEPTH"><span class="type-signature">(static) </span>MAX_PRETTY_PRINT_DEPTH<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Maximum object depth the pretty printer will print to.
+Set this to a lower value to speed up pretty printing if you have large objects.
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.3.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-default">Default Value:</dt>
+    <dd class="tag-default"><ul class="dummy">
+            <li>8</li>
+        </ul></dd>
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line175">line 175</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".addAsyncMatchers"><span class="type-signature">(static) </span>addAsyncMatchers<span class="signature">(matchers)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add custom async matchers for the current scope of specs.
+
+_Note:_ This is only callable from within a <a href="global.html#beforeEach">beforeEach</a>, <a href="global.html#it">it</a>, or <a href="global.html#beforeAll">beforeAll</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>matchers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Keys from this object will be the new async matcher names.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.5.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8149">line 8149</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>custom_matcher</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".addCustomEqualityTester"><span class="type-signature">(static) </span>addCustomEqualityTester<span class="signature">(tester)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add a custom equality tester for the current scope of specs.
+
+_Note:_ This is only callable from within a <a href="global.html#beforeEach">beforeEach</a>, <a href="global.html#it">it</a>, or <a href="global.html#beforeAll">beforeAll</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tester</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A function which takes two arguments to compare and returns a `true` or `false` comparison result if it knows how to compare them, and `undefined` otherwise.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8121">line 8121</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>custom_equality</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".addCustomObjectFormatter"><span class="type-signature">(static) </span>addCustomObjectFormatter<span class="signature">(formatter)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add a custom object formatter for the current scope of specs.
+
+_Note:_ This is only callable from within a <a href="global.html#beforeEach">beforeEach</a>, <a href="global.html#it">it</a>, or <a href="global.html#beforeAll">beforeAll</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>formatter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A function which takes a value to format and returns a string if it knows how to format it, and `undefined` otherwise.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.6.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8163">line 8163</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>custom_object_formatters</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".addMatchers"><span class="type-signature">(static) </span>addMatchers<span class="signature">(matchers)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add custom matchers for the current scope of specs.
+
+_Note:_ This is only callable from within a <a href="global.html#beforeEach">beforeEach</a>, <a href="global.html#it">it</a>, or <a href="global.html#beforeAll">beforeAll</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>matchers</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Keys from this object will be the new matcher names.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8135">line 8135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>custom_matcher</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".addSpyStrategy"><span class="type-signature">(static) </span>addSpyStrategy<span class="signature">(name, factory)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Add a custom spy strategy for the current scope of specs.
+
+_Note:_ This is only callable from within a <a href="global.html#beforeEach">beforeEach</a>, <a href="global.html#it">it</a>, or <a href="global.html#beforeAll">beforeAll</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the strategy (i.e. what you call from `and`)</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>factory</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Factory function that returns the plan to be executed.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.5.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8215">line 8215</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".any"><span class="type-signature">(static) </span>any<span class="signature">(clazz)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value being compared is an instance of the specified class/constructor.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>clazz</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Constructor</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The constructor to check against.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.3.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line399">line 399</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".anything"><span class="type-signature">(static) </span>anything<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value being compared is not `null` and not `undefined`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.2.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line411">line 411</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".arrayContaining"><span class="type-signature">(static) </span>arrayContaining<span class="signature">(sample)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value is an `Array` that contains at least the elements in the sample.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sample</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.2.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line514">line 514</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".arrayWithExactContents"><span class="type-signature">(static) </span>arrayWithExactContents<span class="signature">(sample)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value is an `Array` that contains all of the elements in the sample in any order.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sample</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.8.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line526">line 526</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".clock"><span class="type-signature">(static) </span>clock<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Clock_.html">Clock</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get the currently booted mock {Clock} for this Jasmine environment.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8177">line 8177</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Clock_.html">Clock</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".createSpy"><span class="type-signature">(static) </span>createSpy<span class="signature">(name<span class="signature-attributes">opt</span>, originalFn<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="Spy.html">Spy</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create a bare <a href="Spy.html">Spy</a> object. This won't be installed anywhere and will not have any implementation behind it.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Name to give the spy. This will be displayed in failure messages.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>originalFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Function to act as the real implementation.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.3.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8188">line 8188</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Spy.html">Spy</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".createSpyObj"><span class="type-signature">(static) </span>createSpyObj<span class="signature">(baseName<span class="signature-attributes">opt</span>, methodNames, propertyNames<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create an object with multiple <a href="Spy.html">Spy</a>s as its members.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>baseName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Base name for the spies in the object.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>methodNames</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;String></span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Array of method names to create spies for, or Object whose keys will be method names and values the returnValue.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>propertyNames</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;String></span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Array of property names to create spies for, or Object whose keys will be propertynames and values the returnValue.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.3.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8201">line 8201</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".debugLog"><span class="type-signature">(static) </span>debugLog<span class="signature">(msg)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Logs a message for use in debugging. If the spec fails, trace messages
+will be included in the <a href="global.html#SpecResult">result</a> passed to the
+reporter's specDone method.
+
+This method should be called only when a spec (including any associated
+beforeEach or afterEach functions) is running.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>msg</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The message to log</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>4.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line582">line 582</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".empty"><span class="type-signature">(static) </span>empty<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value being compared is empty.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line444">line 444</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".falsy"><span class="type-signature">(static) </span>falsy<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value being compared is  `null`, `undefined`, `0`, `false` or anything falsey.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line433">line 433</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getEnv"><span class="type-signature">(static) </span>getEnv<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Env.html">Env</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get the currently booted Jasmine Environment.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.3.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line230">line 230</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Env.html">Env</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".is"><span class="type-signature">(static) </span>is<span class="signature">(sample)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a>
+that passes if the actual value is the same as the sample as determined
+by the `===` operator.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sample</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The value to compare the actual to.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line455">line 455</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".isSpy"><span class="type-signature">(static) </span>isSpy<span class="signature">(putativeSpy)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Determines whether the provided function is a Jasmine spy.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>putativeSpy</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function to check.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.0.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line564">line 564</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".mapContaining"><span class="type-signature">(static) </span>mapContaining<span class="signature">(sample)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if every key/value pair in the sample passes the deep equality comparison
+with at least one key/value pair in the actual value being compared
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sample</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Map</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The subset of items that _must_ be in the actual.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.5.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line538">line 538</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".notEmpty"><span class="type-signature">(static) </span>notEmpty<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value being compared is not empty.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line467">line 467</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".objectContaining"><span class="type-signature">(static) </span>objectContaining<span class="signature">(sample)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value being compared contains at least the keys and values.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sample</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The subset of properties that _must_ be in the actual.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>1.3.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line478">line 478</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".setContaining"><span class="type-signature">(static) </span>setContaining<span class="signature">(sample)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if every item in the sample passes the deep equality comparison
+with at least one item in the actual value being compared
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sample</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Set</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The subset of items that _must_ be in the actual.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.5.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line551">line 551</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".setDefaultSpyStrategy"><span class="type-signature">(static) </span>setDefaultSpyStrategy<span class="signature">(defaultStrategyFn)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Set the default spy strategy for the current scope of specs.
+
+_Note:_ This is only callable from within a <a href="global.html#beforeEach">beforeEach</a>, <a href="global.html#it">it</a>, or <a href="global.html#beforeAll">beforeAll</a>.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>defaultStrategyFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">a function that assigns a strategy</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line8229">line 8229</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>beforeEach(function() {
+  jasmine.setDefaultSpyStrategy(and => and.returnValue(true));
+});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".spyOnGlobalErrorsAsync"><span class="type-signature">(async, static) </span>spyOnGlobalErrorsAsync<span class="signature">(fn)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Replaces Jasmine's global error handling with a spy. This prevents Jasmine
+from treating uncaught exceptions and unhandled promise rejections
+as spec failures and allows them to be inspected using the spy's
+<a href="Spy_calls.html">calls property</a> and related matchers such as
+<a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>.
+
+After installing the spy, spyOnGlobalErrorsAsync immediately calls its
+argument, which must be an async or promise-returning function. The spy
+will be passed as the first argument to that callback. Normal error
+handling will be restored when the promise returned from the callback is
+settled.
+
+Note: The JavaScript runtime may deliver uncaught error events and unhandled
+rejection events asynchronously, especially in browsers. If the event
+occurs after the promise returned from the callback is settled, it won't
+be routed to the spy even if the underlying error occurred previously.
+It's up to you to ensure that the returned promise isn't resolved until
+all of the error/rejection events that you want to handle have occurred.
+
+You must await the return value of spyOnGlobalErrorsAsync.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">AsyncFunction</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">A function to run, during which the global error spy will be effective</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line598">line 598</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>it('demonstrates global error spies', async function() {
+  await jasmine.spyOnGlobalErrorsAsync(async function(globalErrorSpy) {
+    setTimeout(function() {
+      throw new Error('the expected error');
+    });
+    await new Promise(function(resolve) {
+      setTimeout(resolve);
+    });
+    const expected = new Error('the expected error');
+    expect(globalErrorSpy).toHaveBeenCalledWith(expected);
+  });
+});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".stringContaining"><span class="type-signature">(static) </span>stringContaining<span class="signature">(expected)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value is a `String` that contains the specified `String`.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.10.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line502">line 502</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".stringMatching"><span class="type-signature">(static) </span>stringMatching<span class="signature">(expected)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value is a `String` that matches the `RegExp` or `String`.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>expected</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2.2.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line490">line 490</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".truthy"><span class="type-signature">(static) </span>truthy<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get an <a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a>, usable in any <a href="matchers.html">matcher</a> that uses Jasmine's equality (e.g. <a href="matchers.html#toEqual">toEqual</a>, <a href="matchers.html#toContain">toContain</a>, or <a href="matchers.html#toHaveBeenCalledWith">toHaveBeenCalledWith</a>),
+that will succeed if the actual value being compared is `true` or anything truthy.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>3.1.0</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_jasmine-4.5.0_jasmine.js.html">lib/jasmine-4.5.0/jasmine.js</a>, <a href="lib_jasmine-4.5.0_jasmine.js.html#line422">line 422</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Spy_calls.html">calls</a></li><li><a href="async-matchers.html">async-matchers</a></li><li><a href="jasmine.html">jasmine</a></li><li><a href="matchers.html">matchers</a></li></ul><h3>Classes</h3><ul><li><a href="Clock_.html">Clock</a></li><li><a href="Env.html">Env</a></li><li><a href="MatchersUtil.html">MatchersUtil</a></li><li><a href="Spy.html">Spy</a></li><li><a href="jsApiReporter.html">jsApiReporter</a></li></ul><h3>Interfaces</h3><ul><li><a href="AsymmetricEqualityTester.html">AsymmetricEqualityTester</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="Reporter.html">Reporter</a></li><li><a href="Spec.html">Spec</a></li><li><a href="SpyStrategy.html">SpyStrategy</a></li><li><a href="Suite.html">Suite</a></li></ul><h3>Global</h3><ul><li><a href="global.html#afterAll">afterAll</a></li><li><a href="global.html#afterEach">afterEach</a></li><li><a href="global.html#beforeAll">beforeAll</a></li><li><a href="global.html#beforeEach">beforeEach</a></li><li><a href="global.html#describe">describe</a></li><li><a href="global.html#expect">expect</a></li><li><a href="global.html#expectAsync">expectAsync</a></li><li><a href="global.html#fail">fail</a></li><li><a href="global.html#fdescribe">fdescribe</a></li><li><a href="global.html#fit">fit</a></li><li><a href="global.html#imprimePersonas">imprimePersonas</a></li><li><a href="global.html#imprimeProyectos">imprimeProyectos</a></li><li><a href="global.html#imprimeProyectosConPersonas">imprimeProyectosConPersonas</a></li><li><a href="global.html#it">it</a></li><li><a href="global.html#main_listar">main_listar</a></li><li><a href="global.html#main_listarConPersonas">main_listarConPersonas</a></li><li><a href="global.html#pending">pending</a></li><li><a href="global.html#personaDIV">personaDIV</a></li><li><a href="global.html#personaTR">personaTR</a></li><li><a href="global.html#personasCabeceraDIV">personasCabeceraDIV</a></li><li><a href="global.html#personasCabeceraTABLE">personasCabeceraTABLE</a></li><li><a href="global.html#personasPieDIV">personasPieDIV</a></li><li><a href="global.html#personasPieTABLE">personasPieTABLE</a></li><li><a href="global.html#proyectoConPersonasTR">proyectoConPersonasTR</a></li><li><a href="global.html#proyectoDIV">proyectoDIV</a></li><li><a href="global.html#proyectoTR">proyectoTR</a></li><li><a href="global.html#proyectosCabeceraDIV">proyectosCabeceraDIV</a></li><li><a href="global.html#proyectosCabeceraTABLE">proyectosCabeceraTABLE</a></li><li><a href="global.html#proyectosPieDIV">proyectosPieDIV</a></li><li><a href="global.html#proyectosPieTABLE">proyectosPieTABLE</a></li><li><a href="global.html#recuperaPersonas">recuperaPersonas</a></li><li><a href="global.html#recuperaProyectos">recuperaProyectos</a></li><li><a href="global.html#recuperaProyectosConPersonas">recuperaProyectosConPersonas</a></li><li><a href="global.html#setSpecProperty">setSpecProperty</a></li><li><a href="global.html#setSuiteProperty">setSuiteProperty</a></li><li><a href="global.html#spyOn">spyOn</a></li><li><a href="global.html#spyOnAllFunctions">spyOnAllFunctions</a></li><li><a href="global.html#spyOnProperty">spyOnProperty</a></li><li><a href="global.html#xdescribe">xdescribe</a></li><li><a href="global.html#xit">xit</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Feb 03 2023 11:50:34 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

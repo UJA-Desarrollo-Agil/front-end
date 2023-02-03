@@ -1,3 +1,9 @@
+/**
+ * @file personas-spec.js
+ * @description Fichero TDD para probar todo lo relacionado con MS Personas en el front-end
+ * @author Víctor M. Rivas <vrivas@ujaen.es>
+ * @date 03-feb-2023
+ */
 
 // SPECS para Jasmine
 describe("MAIN", function () {
