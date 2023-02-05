@@ -12,6 +12,9 @@ const API_GATEWAY = "http://localhost:8001"
 /// Id del div en el que se debe escribir el listado de personas
 const DIV_LISTADO = "listado"
 
+/// Id del div en el que se deben escribir los detalles de una persona
+const DIV_UNA_PERSONA = "detalles"
+
 /**
  * Función que recuperar todas las personas llamando al MS Personas
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
@@ -23,6 +26,16 @@ async function recuperaPersonas(callBackFn) {
     callBackFn(vectorPersonas.data)
 }
 
+/**
+ * Función que recuperar todas las personas llamando al MS Personas
+ * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
+ */
+async function recuperaUnaPersona(callBackFn) {
+    const url = API_GATEWAY  + "/personas/getPorId/354047536357441750"
+    const response = await fetch(url);
+    const persona = await response.json()
+    callBackFn(persona)
+}
 // Mostrar como DIV: descomentar si se quiere mostrar como DIV y comentar las de TABLE
 //const FN_CABECERA="personasCabeceraDIV"
 //const FN_PERSONA="personaDIV"
@@ -118,6 +131,21 @@ function imprimePersonas(vector) {
     div.innerHTML=msj;
 }
 
+/**
+ * Función para mostrar en pantalla los detalles de una persona que se ha recuperado de la BBDD por su id
+ * @param {Persona} persona Datos de la persona a mostrar
+ */
+ 
+function imprimeUnaPersona(persona) {
+    const div = document.getElementById(DIV_UNA_PERSONA);
+    console.log( persona ) // Para comprobar lo que hay en vector
+    let msj="";
+    msj+= eval(FN_CABECERA)();
+    msj += eval(FN_PERSONA)(persona);
+    msj += eval(FN_PIE)();
+    div.innerHTML=msj;
+}
+
 
 /**
  * Función principal para recuperar las personas desde el MS y, posteriormente, imprimirlas.
@@ -125,5 +153,15 @@ function imprimePersonas(vector) {
  */
 function main_listar() {
     recuperaPersonas(imprimePersonas);
+    return true;
+}
+
+
+/**
+ * Función principal para mostrar los datos de una persona desde el MS y, posteriormente, imprimirla.
+ * @returns True
+ */
+function main_mostrar() {
+    recuperaUnaPersona(imprimeUnaPersona);
     return true;
 }

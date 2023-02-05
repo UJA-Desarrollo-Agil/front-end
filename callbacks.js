@@ -45,6 +45,19 @@ const CB_PERSONAS = {
                 res.status(500).json({ error: error.description })
             }
         },
+        mostrar: async (req, res) => {
+            try {
+                CORS(res).res.sendFile("/mostrar-persona.html",
+                    SEND_FILE_OPTIONS,
+                    function (err) {
+                        if (err) {
+                            console.error(err);
+                        }
+                    })
+            } catch (error) {
+                res.status(500).json({ error: error.description })
+            }
+        },
     }
 } 
 

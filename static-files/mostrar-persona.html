@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Aplicación Personas-Proyectos</title>
+    <title>Mostrar una persona</title>
     
     <!-- Cargamos biblioteca Jasmine -->
     <!--
@@ -17,19 +17,25 @@
     <script src="js/personas-spec.js"></script>
     -->
     <!-- Cargamos nuestros CSS -->
+    <!-- CSS Genéricos del Front-End -->
     <link rel="stylesheet" href="css/personas-proyectos.css">
 
+    <!-- CSS Particulares de esta página -->
+    <link rel="stylesheet" href="css/personas.css">
+
+    <!-- Cargamos ficheros JS con las funciones necesarias -->
+    <script src="js/personas.js"></script>
 
 </head>
 
 <body>
-    <h1>Aplicación Personas-Proyectos</h1>
-    <p><a href="listar-personas.html">Listar personas</a></p>
-    <p><a href="listar-proyectos.html">Listar proyectos</a></p>
-    <p><a href="listar-proyectos-con-personas.html">Listar proyectos con personas</a></p>
-    <p><a href="mostrar-persona.html?id=354047536357441750">Mostrar una persona</a></p>
-
-
+    <h1>Motrar una persona</h1>
+    <div id="detalles">
+        <!-- Se rellena con Javascript -->
+    </div>
+    <script>
+        main_mostrar();
+    </script>
 </body>
 
 </html>
