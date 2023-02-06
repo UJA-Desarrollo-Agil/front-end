@@ -11,6 +11,15 @@ const SERVER = "http://localhost:8003";
 /// Id del div en el que se debe escribir el listado de proyectos
 const DIV_LISTADO = "listado"
 
+
+/**
+ * Devuelve una cantidad con formato de moneda en euros, es decir: N.NNN.NNN,NN€
+ * @param {número} cantidad Cantidad que hay que devolver formateada
+ * @returns La misma cantidad, pero con formato de euros.
+ */
+function euros ( cantidad ) {
+    return (new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(cantidad));
+}
 /**
  * Función que recuperar todos los proyectos llamando al MS Proyectos
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
@@ -104,7 +113,7 @@ function proyectoTR( p ) {
     const d=p.data
     const ini=d.inicio;
     const fin=d.final;
-    const presupuesto=(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(d.presupuesto));
+    const presupuesto=euros(d.presupuesto);
 
     return `<tr title="${p.ref['@ref'].id}">
     <td>${d.alias}</td>
@@ -127,7 +136,7 @@ function proyectoConPersonasTR( p ) {
     const d=p.data
     const ini=d.inicio;
     const fin=d.final;
-    const presupuesto=(new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(d.presupuesto));
+    const presupuesto=euros(d.presupuesto);
     let msj= eval(FN_CABECERA)();
 
     msj+=`<tr title="${p.ref['@ref'].id}">
