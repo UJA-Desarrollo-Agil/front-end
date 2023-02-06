@@ -138,8 +138,7 @@ function proyectoConPersonasTR( p ) {
     const fin=d.final;
     const presupuesto=euros(d.presupuesto);
     let msj= eval(FN_CABECERA)();
-    let idPersona = p.ref['@ref'].id;
-    msj+=`<tr title="${idPersona}">
+    msj+=`<tr>
     <td>${d.alias}</td>
     <td><em>${d.nombre}</em></td>
     <td>${presupuesto}</td>
@@ -147,7 +146,14 @@ function proyectoConPersonasTR( p ) {
     <td>${fin.dia}/${fin.mes}/${fin.año}</td>
     </tr>
     <tr><th colspan="5">Personas</th></tr>
-    <tr><td colspan="5"><a href="/mostrar-persona.html?id=${idPersona}">${d.datos_personas.map(e=>e.data.nombre).join(", ")}</a></td></tr>
+    <tr><td colspan="5">
+        ${d.datos_personas
+            .map(e=>"<a href='/mostrar-persona.html?id="+e.ref['@ref'].id+"'>"
+            +e.data.nombre
+            +" "+e.data.apellidos
+                +"</a>")
+            .join(", ")}
+    </td></tr>
     `;
     msj+=eval(FN_PIE)();
     return msj;
