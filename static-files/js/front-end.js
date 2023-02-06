@@ -7,6 +7,11 @@
 
 /// Espacio de nombres
 let FRONTEND={};
+
+
+/// Dirección del MS que funciona como API_GATEWAY
+FRONTEND.API_GATEWAY = "http://localhost:8001"
+
 /**
  * BUsca el nombre de un parámetro pasado por la URL, con el formato ?nombreParametro=valor
  * @param {String} nombreParametro 

@@ -5,10 +5,6 @@
  * @date 03-feb-2023
  */
 
-
-/// Dirección del MS que funciona como API_GATEWAY
-const API_GATEWAY = "http://localhost:8001"
-
 /// Id del div en el que se debe escribir el listado de personas
 const DIV_LISTADO = "listado"
 
@@ -21,7 +17,7 @@ const DIV_UNA_PERSONA = "detalles"
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 async function recuperaPersonas(callBackFn) {
-    const url = API_GATEWAY + "/personas/getTodas"
+    const url = FRONTEND.API_GATEWAY + "/personas/getTodas"
     const response = await fetch(url);
     const vectorPersonas = await response.json()
     callBackFn(vectorPersonas.data)
@@ -33,7 +29,7 @@ async function recuperaPersonas(callBackFn) {
  */
 async function recuperaUnaPersona(callBackFn) {
     const idPersona = FRONTEND.recuperaParametro("id")
-    const url = API_GATEWAY + "/personas/getPorId/" + idPersona
+    const url = FRONTEND.API_GATEWAY + "/personas/getPorId/" + idPersona
     const response = await fetch(url);
     const persona = await response.json()
     callBackFn(persona)

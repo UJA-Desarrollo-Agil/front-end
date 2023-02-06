@@ -5,8 +5,6 @@
  * @date 03-feb-2023
  */
 
-/// Dirección del MS de los proyectos
-const SERVER = "http://localhost:8003";
 
 /// Id del div en el que se debe escribir el listado de proyectos
 const DIV_LISTADO = "listado"
@@ -18,7 +16,7 @@ const DIV_LISTADO = "listado"
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 async function recuperaProyectos(callBackFn) {
-    const url = SERVER + "/getTodos"
+    const url = FRONTEND.API_GATEWAY + "/proyectos/getTodos"
     const response = await fetch(url);
     const vectorProyectos = await response.json()
     callBackFn(vectorProyectos.data)
@@ -30,7 +28,7 @@ async function recuperaProyectos(callBackFn) {
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 async function recuperaProyectosConPersonas(callBackFn) {
-    const url = SERVER  + "/getTodosConPersonas"
+    const url = FRONTEND.API_GATEWAY  + "/proyectos/getTodosConPersonas"
     const response = await fetch(url);
     const vectorProyectos = await response.json()
     callBackFn(vectorProyectos.data)
@@ -168,7 +166,7 @@ function proyectosPieTABLE() {
  */
 function imprimeProyectos(vector) {
     const div = document.getElementById(DIV_LISTADO);
-    console.log( vector ) // Para comprobar lo que hay en vector
+    //console.log( vector ) // Para comprobar lo que hay en vector
     let msj="";
     msj+= eval(FN_CABECERA)();
     vector.forEach(e => msj += eval(FN_Proyecto)(e))
