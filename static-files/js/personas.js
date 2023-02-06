@@ -15,27 +15,6 @@ const DIV_LISTADO = "listado"
 /// Id del div en el que se deben escribir los detalles de una persona
 const DIV_UNA_PERSONA = "detalles"
 
-/**
- * BUsca el nombre de un parámetro pasado por la URL, con el formato ?nombreParametro=valor
- * @param {String} nombreParametro 
- * @returns El valor del parámetro si existe; si no, devuelve NULL
- */
-function recuperaParametro(nombreParametro) {
-    const cad = location.search.substring(1);
-    const params=[]
-    if (cad.length) {
-        let parejas = [];
-        parejas = cad.split("&");
-        for (let i = 0; i < parejas.length; ++i) {
-            const par = parejas[i].split("=");
-            params[par[0]] = par[1]
-                .replace(/\+/g, " ")
-                .replace(/%3A/g, ":")
-                .replace(/%2C/g, ",");
-        }
-    }
-    return (typeof params[nombreParametro]==="undefined")?NULL:params[nombreParametro]
-}
 
 /**
  * Función que recuperar todas las personas llamando al MS Personas
@@ -53,7 +32,7 @@ async function recuperaPersonas(callBackFn) {
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 async function recuperaUnaPersona(callBackFn) {
-    const idPersona = recuperaParametro("id")
+    const idPersona = FRONTEND.recuperaParametro("id")
     const url = API_GATEWAY + "/personas/getPorId/" + idPersona
     const response = await fetch(url);
     const persona = await response.json()
@@ -146,7 +125,7 @@ function personasPieTABLE() {
 
 function imprimePersonas(vector) {
     const div = document.getElementById(DIV_LISTADO);
-    console.log(vector) // Para comprobar lo que hay en vector
+    // console.log(vector) // Para comprobar lo que hay en vector
     let msj = "";
     msj += eval(FN_CABECERA)();
     vector.forEach(e => msj += eval(FN_PERSONA)(e))
@@ -161,7 +140,7 @@ function imprimePersonas(vector) {
 
 function imprimeUnaPersona(persona) {
     const div = document.getElementById(DIV_UNA_PERSONA);
-    console.log(persona) // Para comprobar lo que hay en vector
+    // console.log(persona) // Para comprobar lo que hay en vector
     let msj = "";
     msj += eval(FN_CABECERA)();
     msj += eval(FN_PERSONA)(persona);
