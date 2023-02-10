@@ -20,29 +20,6 @@ Frontend.ID_SECCION_PRINCIPAL = "seccion-principal"
 Frontend.ID_SECCION_PRINCIPAL_TITULO = "seccion-principal-titulo"
 Frontend.ID_SECCION_PRINCIPAL_CONTENIDO = "seccion-principal-contenido"
 
-/**
- * BUsca el nombre de un parámetro pasado por la URL, con el formato ?nombreParametro=valor
- * @param {String} nombreParametro 
- * @returns El valor del parámetro si existe; si no, devuelve NULL
- */
-Frontend.recuperaParametro = function (nombreParametro) {
-    const cad = location.search.substring(1);
-    const params = []
-    if (cad.length) {
-        let parejas = [];
-        parejas = cad.split("&");
-        for (let i = 0; i < parejas.length; ++i) {
-            const par = parejas[i].split("=");
-            params[par[0]] = par[1]
-                .replace(/\+/g, " ")
-                .replace(/%3A/g, ":")
-                .replace(/%2C/g, ",");
-        }
-    }
-    return (typeof params[nombreParametro] === "undefined") ? NULL : params[nombreParametro]
-}
-
-
 
 /**
  * Devuelve una cantidad con formato de moneda en euros, es decir: N.NNN.NNN,NN€
