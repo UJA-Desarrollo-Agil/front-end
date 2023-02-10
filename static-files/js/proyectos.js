@@ -174,7 +174,7 @@ Proyectos.proyectoConPersonasTR = function (p) {
     <tr><th colspan="5">Personas</th></tr>
     <tr><td colspan="5">
         ${d.datos_personas
-            .map(e => "<a href='/mostrar-persona.html?id=" + e.ref['@ref'].id + "'>"
+            .map(e => "<a href='javascript:Personas.mostrar(\"" + e.ref['@ref'].id + "\")'>"
                 + e.data.nombre
                 + " " + e.data.apellidos
                 + "</a>")
