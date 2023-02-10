@@ -14,7 +14,10 @@
     -->
     <!-- Cargamos ficheros JS propios del proyecto -->
     <script src="js/front-end.js"></script>
-    
+    <script src="js/personas.js"></script>
+    <script src="js/proyectos.js"></script>
+
+
     <!-- Cargamos ficheros spec con los tests -->
     <!--
     <script src="js/personas-spec.js"></script>
@@ -28,12 +31,16 @@
 
 <body>
     <h1>Aplicación Personas-Proyectos</h1>
-    <p><a href="listar-personas.html">Listar personas</a></p>
-    <p><a href="listar-proyectos.html">Listar proyectos</a></p>
-    <p><a href="listar-proyectos-con-personas.html">Listar proyectos con personas</a></p>
-    <p><a href="mostrar-persona.html?id=354047536357441750">Mostrar una persona</a></p>
-
-
+    <nav>
+        <a href="javascript:Personas.listar()">Listar personas</a> |
+        <a href="javascript:Proyectos.listar()">Listar proyectos</a> |
+        <a href="javascript:Proyectos.listarConPersonas()">Listar proyectos con personas</a> |
+        <a href="javascript:Personas.mostrar('354047536357441750')">Mostrar una persona</a>
+      </nav> 
+      <article id="seccion-principal" class="ocultar">
+        <h2 id="seccion-principal-titulo"></h2>
+        <div id="seccion-principal-contenido"></div>
+      </article>
 </body>
 
 </html>

@@ -6,20 +6,51 @@
  */
 
 
-/// Id del div en el que se debe escribir el listado de proyectos
-const DIV_LISTADO = "listado"
+/// Creo el espacio de nombres
+let Proyectos = {};
+
+/// Id del article en el que se debe escribir el listado de personas
+Proyectos.ARTICLE_LISTAR = "proyectos-listar"
+
+/// Id del div en el que se deben escribir los detalles de una persona
+Proyectos.ARTICLE_MOSTRAR = "proyectos-mostrar"
 
 
+// Mostrar como DIV: descomentar si se quiere mostrar como DIV y comentar las de TABLE
+// Proyectos.AFN_CABECERA="proyectosCabeceraDIV"
+// Proyectos.AFN_Proyecto="proyectoDIV"
+// Proyectos.AFN_PIE="proyectosPieDIV"
+
+// Mostrar como TABLE: descomentar si se quiere mostrar como TABLE y comentar las de DIV
+Proyectos.FN_CABECERA = "Proyectos.proyectosCabeceraTABLE"
+Proyectos.FN_Proyecto = "Proyectos.proyectoTR"
+Proyectos.FN_ProyectoConPersonas = "Proyectos.proyectoConPersonasTR"
+Proyectos.FN_PIE = "Proyectos.proyectosPieTABLE"
 
 /**
  * Función que recuperar todos los proyectos llamando al MS Proyectos
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-async function recuperaProyectos(callBackFn) {
-    const url = FRONTEND.API_GATEWAY + "/proyectos/getTodos"
-    const response = await fetch(url);
-    const vectorProyectos = await response.json()
-    callBackFn(vectorProyectos.data)
+Proyectos.recuperaProyectos = async function (callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio proyectos
+    try {
+        const url = Frontend.API_GATEWAY + "/proyectos/getTodos"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los proyectos que se han descargado
+    let vectorProyectos = null
+    if (response) {
+        vectorProyectos = await response.json()
+        callBackFn(vectorProyectos.data)
+    }
 }
 
 /**
@@ -27,29 +58,33 @@ async function recuperaProyectos(callBackFn) {
  * llamando al MS Proyectos
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-async function recuperaProyectosConPersonas(callBackFn) {
-    const url = FRONTEND.API_GATEWAY  + "/proyectos/getTodosConPersonas"
-    const response = await fetch(url);
-    const vectorProyectos = await response.json()
-    callBackFn(vectorProyectos.data)
+Proyectos.recuperaProyectosConPersonas = async function (callBackFn) {
+    let response = null
+
+    // Intento conectar con el microservicio proyectos
+    try {
+        const url = Frontend.API_GATEWAY + "/proyectos/getTodosConPersonas"
+        response = await fetch(url)
+
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway")
+        console.error(error)
+        //throw error
+    }
+
+    // Muestro todos los proyectos que se han descargado
+    let vectorProyectos = null
+    if (response) {
+        vectorProyectos = await response.json()
+        callBackFn(vectorProyectos.data)
+    }
 }
-
-// Mostrar como DIV: descomentar si se quiere mostrar como DIV y comentar las de TABLE
-//const FN_CABECERA="proyectosCabeceraDIV"
-//const FN_Proyecto="proyectoDIV"
-//const FN_PIE="proyectosPieDIV"
-
-// Mostrar como TABLE: descomentar si se quiere mostrar como TABLE y comentar las de DIV
-const FN_CABECERA="proyectosCabeceraTABLE"
-const FN_Proyecto="proyectoTR"
-const FN_ProyectoConPersonas="proyectoConPersonasTR"
-const FN_PIE="proyectosPieTABLE"
 
 /**
  * Cabecera del div
  * @returns Cadena con la cabecera del div
  */
-function proyectosCabeceraDIV() {
+Proyectos.proyectosCabeceraDIV = function () {
     return "<div>";
 }
 
@@ -60,7 +95,7 @@ function proyectosCabeceraDIV() {
  * @returns ¡¡AUN SIN HACER!!
  * @todo Mostrar datos del proyecto como un DIV
  */
-function proyectoDIV( p ) {
+Proyectos.proyectoDIV = function (p) {
     /*return `<div>
     <p><b>ID</b>: ${p.ref['@ref'].id}</p>
     <p><b>Alias</b>: ${p.data.alias}</p>
@@ -76,7 +111,7 @@ function proyectoDIV( p ) {
  * Función para escribir el pie del DIV
  * @returns Pie del div
  */
-function proyectosPieDIV() {
+Proyectos.proyectosPieDIV = function () {
     return "</div>";
 }
 
@@ -86,7 +121,7 @@ function proyectosPieDIV() {
  * Crea la cabecera para mostrar la info como tabla
  * @returns Cabecera de la tabla
  */
-function proyectosCabeceraTABLE() {
+Proyectos.proyectosCabeceraTABLE = function () {
     return `<table class="listado-proyectos">
         <thead>
         <th>Alias</th><th>Nombre</th><th>Presupuesto</th><th>Desde</th><th>Hasta</th>
@@ -100,11 +135,11 @@ function proyectosCabeceraTABLE() {
  * @param {proyecto} p Datos del proyecto a mostrar
  * @returns Cadena conteniendo todo el elemento TR que muestra el proyecto.
  */
-function proyectoTR( p ) {
-    const d=p.data
-    const ini=d.inicio;
-    const fin=d.final;
-    const presupuesto=FRONTEND.euros(d.presupuesto);
+Proyectos.proyectoTR = function (p) {
+    const d = p.data
+    const ini = d.inicio;
+    const fin = d.final;
+    const presupuesto = Frontend.euros(d.presupuesto);
 
     return `<tr title="${p.ref['@ref'].id}">
     <td>${d.alias}</td>
@@ -123,13 +158,13 @@ function proyectoTR( p ) {
  * @param {proyecto} p Datos del proyecto a mostrar
  * @returns Cadena conteniendo los distintos elementos TR que muestran el proyecto.
  */
-function proyectoConPersonasTR( p ) {
-    const d=p.data
-    const ini=d.inicio;
-    const fin=d.final;
-    const presupuesto=FRONTEND.euros(d.presupuesto);
-    let msj= eval(FN_CABECERA)();
-    msj+=`<tr>
+Proyectos.proyectoConPersonasTR = function (p) {
+    const d = p.data
+    const ini = d.inicio;
+    const fin = d.final;
+    const presupuesto = Frontend.euros(d.presupuesto);
+    let msj = eval(Proyectos.FN_CABECERA)();
+    msj += `<tr>
     <td>${d.alias}</td>
     <td><em>${d.nombre}</em></td>
     <td>${presupuesto}</td>
@@ -139,14 +174,14 @@ function proyectoConPersonasTR( p ) {
     <tr><th colspan="5">Personas</th></tr>
     <tr><td colspan="5">
         ${d.datos_personas
-            .map(e=>"<a href='/mostrar-persona.html?id="+e.ref['@ref'].id+"'>"
-            +e.data.nombre
-            +" "+e.data.apellidos
-                +"</a>")
+            .map(e => "<a href='javascript:Personas.mostrar(\"" + e.ref['@ref'].id + "\")'>"
+                + e.data.nombre
+                + " " + e.data.apellidos
+                + "</a>")
             .join(", ")}
     </td></tr>
     `;
-    msj+=eval(FN_PIE)();
+    msj += eval(Proyectos.FN_PIE)();
     return msj;
 }
 
@@ -154,7 +189,7 @@ function proyectoConPersonasTR( p ) {
  * Pie de la tabla en la que se muestran las personas
  * @returns Cadena con el pie de la tabla
  */
-function proyectosPieTABLE() {
+Proyectos.proyectosPieTABLE = function () {
     return "</tbody></table>";
 }
 
@@ -164,14 +199,16 @@ function proyectosPieTABLE() {
  * Función para mostrar en pantalla todos los proyectos que se han recuperado de la BBDD.
  * @param {Vector_de_proyectos} vector Vector con los datos de los proyectos a mostrar
  */
-function imprimeProyectos(vector) {
-    const div = document.getElementById(DIV_LISTADO);
+Proyectos.imprimeProyectos = function (vector) {
     //console.log( vector ) // Para comprobar lo que hay en vector
-    let msj="";
-    msj+= eval(FN_CABECERA)();
-    vector.forEach(e => msj += eval(FN_Proyecto)(e))
-    msj += eval(FN_PIE)();
-    div.innerHTML=msj;
+    let msj = "";
+    msj += eval(Proyectos.FN_CABECERA)();
+    vector.forEach(e => msj += eval(Proyectos.FN_Proyecto)(e))
+    msj += eval(Proyectos.FN_PIE)();
+
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar( "Listado de proyectos", msj )
+
 }
 
 
@@ -181,12 +218,14 @@ function imprimeProyectos(vector) {
  * junto con las personas asignadas a los mismos.
  * @param {Vector_de_proyectos} vector Vector con los datos de los proyectos a mostrar
  */
-function imprimeProyectosConPersonas(vector) {
-    const div = document.getElementById(DIV_LISTADO);
+Proyectos.imprimeProyectosConPersonas = function (vector) {
     //console.log( vector ) // Para comprobar lo que hay en vector
-    let msj="";
-    vector.forEach(e => msj += eval(FN_ProyectoConPersonas)(e))
-    div.innerHTML=msj;
+    let msj = "";
+    vector.forEach(e => msj += eval(Proyectos.FN_ProyectoConPersonas)(e))
+
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar( "Listado de proyectos con personas", msj )
+
 }
 
 
@@ -194,9 +233,8 @@ function imprimeProyectosConPersonas(vector) {
  * Función principal para recuperar los proyectos desde el MS y, posteriormente, imprimirlos.
  * @returns True
  */
-function main_listar() {
-    recuperaProyectos(imprimeProyectos);
-    return true;
+Proyectos.listar = function () {
+    this.recuperaProyectos(this.imprimeProyectos);
 }
 
 /**
@@ -204,8 +242,6 @@ function main_listar() {
  * posteriormente, imprimirlos.
  * @returns True
  */
-function main_listarConPersonas() {
-    //recuperaProyectosConPersonas(imprimeProyectosConPersonas);
-    recuperaProyectosConPersonas(imprimeProyectosConPersonas);
-    return true;
+Proyectos.listarConPersonas = function () {
+    this.recuperaProyectosConPersonas(this.imprimeProyectosConPersonas);
 }
