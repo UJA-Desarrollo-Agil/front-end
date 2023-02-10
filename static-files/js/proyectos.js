@@ -243,6 +243,5 @@ Proyectos.listar = function () {
  * @returns True
  */
 Proyectos.listarConPersonas = function () {
-    //recuperaProyectosConPersonas(imprimeProyectosConPersonas);
     this.recuperaProyectosConPersonas(this.imprimeProyectosConPersonas);
 }
