@@ -3,7 +3,7 @@
 
 <head>
     <title>Aplicación Personas-Proyectos</title>
-    
+
     <!-- Cargamos biblioteca Jasmine -->
     <!--
     <link rel="stylesheet" href="lib/jasmine-4.5.0/jasmine.css">
@@ -31,16 +31,29 @@
 
 <body>
     <h1>Aplicación Personas-Proyectos</h1>
+    <!-- Barra de navegación de la aplicación -->
     <nav>
-        <a href="javascript:Personas.listar()">Listar personas</a> |
-        <a href="javascript:Proyectos.listar()">Listar proyectos</a> |
-        <a href="javascript:Proyectos.listarConPersonas()">Listar proyectos con personas</a> |
-        <a href="javascript:Personas.mostrar('354047536357441750')">Mostrar una persona</a>
-      </nav> 
-      <article id="seccion-principal" class="ocultar">
+        <a href="javascript:Personas.listar()"
+            title="Realiza un listado de todas las personas que hay en la BBDD">Listar personas</a>
+        <a href="javascript:Proyectos.listar()"
+            title="Realiza un listado de todas los proyectos que hay en la BBDD">Listar proyectos</a>
+        <a href="javascript:Proyectos.listarConPersonas()"
+            title="Realiza un listado de todas los proyectos que hay en la BBDD mostrando también las personas asignadas a cada proyecto">
+            Listar proyectos con personas</a>
+        <a href="javascript:Personas.mostrar('354047536357441750')"
+            title="Muestra los datos de una persona como ejemplo">Mostrar una persona de ejemplo</a>
+    </nav>
+
+    <!-- 
+        Article en el que se va a mostrar la info cuando se pinche una opción del menú 
+        Todos los apartados de este article se rellenarán con funciones en Javascript
+    -->
+    <article id="seccion-principal" class="ocultar">
+        <!-- Título del article -->
         <h2 id="seccion-principal-titulo"></h2>
+        <!-- Contenido del article -->
         <div id="seccion-principal-contenido"></div>
-      </article>
+    </article>
 </body>
 
 </html>

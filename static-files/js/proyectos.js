@@ -9,29 +9,13 @@
 /// Creo el espacio de nombres
 let Proyectos = {};
 
-/// Id del article en el que se debe escribir el listado de personas
-Proyectos.ARTICLE_LISTAR = "proyectos-listar"
 
-/// Id del div en el que se deben escribir los detalles de una persona
-Proyectos.ARTICLE_MOSTRAR = "proyectos-mostrar"
-
-
-// Mostrar como DIV: descomentar si se quiere mostrar como DIV y comentar las de TABLE
-// Proyectos.AFN_CABECERA="proyectosCabeceraDIV"
-// Proyectos.AFN_Proyecto="proyectoDIV"
-// Proyectos.AFN_PIE="proyectosPieDIV"
-
-// Mostrar como TABLE: descomentar si se quiere mostrar como TABLE y comentar las de DIV
-Proyectos.FN_CABECERA = "Proyectos.proyectosCabeceraTABLE"
-Proyectos.FN_Proyecto = "Proyectos.proyectoTR"
-Proyectos.FN_ProyectoConPersonas = "Proyectos.proyectoConPersonasTR"
-Proyectos.FN_PIE = "Proyectos.proyectosPieTABLE"
 
 /**
  * Función que recuperar todos los proyectos llamando al MS Proyectos
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-Proyectos.recuperaProyectos = async function (callBackFn) {
+Proyectos.recupera = async function (callBackFn) {
     let response = null
 
     // Intento conectar con el microservicio proyectos
@@ -58,7 +42,7 @@ Proyectos.recuperaProyectos = async function (callBackFn) {
  * llamando al MS Proyectos
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-Proyectos.recuperaProyectosConPersonas = async function (callBackFn) {
+Proyectos.recuperaConPersonas = async function (callBackFn) {
     let response = null
 
     // Intento conectar con el microservicio proyectos
@@ -80,40 +64,6 @@ Proyectos.recuperaProyectosConPersonas = async function (callBackFn) {
     }
 }
 
-/**
- * Cabecera del div
- * @returns Cadena con la cabecera del div
- */
-Proyectos.proyectosCabeceraDIV = function () {
-    return "<div>";
-}
-
-
-/**
- * Muestra todos los datos del proyecto como un DIV
- * @param {persona} p Datos del proyecto a mostrar 
- * @returns ¡¡AUN SIN HACER!!
- * @todo Mostrar datos del proyecto como un DIV
- */
-Proyectos.proyectoDIV = function (p) {
-    /*return `<div>
-    <p><b>ID</b>: ${p.ref['@ref'].id}</p>
-    <p><b>Alias</b>: ${p.data.alias}</p>
-    <p><b>Nombre</b>: ${p.data.nombre}</p>
-    <p><b>Presupuesto</b>: ${p.data.presupuesto}</p>
-    <p><b>En plantilla desde</b>: ${p.data.anio_entrada}</p>
-    </div>
-    `;*/
-    return "<div>SIN HACER</div>";
-}
-
-/**
- * Función para escribir el pie del DIV
- * @returns Pie del div
- */
-Proyectos.proyectosPieDIV = function () {
-    return "</div>";
-}
 
 // Funciones para mostrar como TABLE
 
@@ -121,7 +71,7 @@ Proyectos.proyectosPieDIV = function () {
  * Crea la cabecera para mostrar la info como tabla
  * @returns Cabecera de la tabla
  */
-Proyectos.proyectosCabeceraTABLE = function () {
+Proyectos.cabeceraTable = function () {
     return `<table class="listado-proyectos">
         <thead>
         <th>Alias</th><th>Nombre</th><th>Presupuesto</th><th>Desde</th><th>Hasta</th>
@@ -135,7 +85,7 @@ Proyectos.proyectosCabeceraTABLE = function () {
  * @param {proyecto} p Datos del proyecto a mostrar
  * @returns Cadena conteniendo todo el elemento TR que muestra el proyecto.
  */
-Proyectos.proyectoTR = function (p) {
+Proyectos.cuerpoTr = function (p) {
     const d = p.data
     const ini = d.inicio;
     const fin = d.final;
@@ -158,12 +108,12 @@ Proyectos.proyectoTR = function (p) {
  * @param {proyecto} p Datos del proyecto a mostrar
  * @returns Cadena conteniendo los distintos elementos TR que muestran el proyecto.
  */
-Proyectos.proyectoConPersonasTR = function (p) {
+Proyectos.cuerpoConPersonasTr = function (p) {
     const d = p.data
     const ini = d.inicio;
     const fin = d.final;
     const presupuesto = Frontend.euros(d.presupuesto);
-    let msj = eval(Proyectos.FN_CABECERA)();
+    let msj = Proyectos.cabeceraTable();
     msj += `<tr>
     <td>${d.alias}</td>
     <td><em>${d.nombre}</em></td>
@@ -181,7 +131,7 @@ Proyectos.proyectoConPersonasTR = function (p) {
             .join(", ")}
     </td></tr>
     `;
-    msj += eval(Proyectos.FN_PIE)();
+    msj += Proyectos.pieTable();
     return msj;
 }
 
@@ -189,7 +139,7 @@ Proyectos.proyectoConPersonasTR = function (p) {
  * Pie de la tabla en la que se muestran las personas
  * @returns Cadena con el pie de la tabla
  */
-Proyectos.proyectosPieTABLE = function () {
+Proyectos.pieTable = function () {
     return "</tbody></table>";
 }
 
@@ -199,12 +149,12 @@ Proyectos.proyectosPieTABLE = function () {
  * Función para mostrar en pantalla todos los proyectos que se han recuperado de la BBDD.
  * @param {Vector_de_proyectos} vector Vector con los datos de los proyectos a mostrar
  */
-Proyectos.imprimeProyectos = function (vector) {
+Proyectos.imprime = function (vector) {
     //console.log( vector ) // Para comprobar lo que hay en vector
     let msj = "";
-    msj += eval(Proyectos.FN_CABECERA)();
-    vector.forEach(e => msj += eval(Proyectos.FN_Proyecto)(e))
-    msj += eval(Proyectos.FN_PIE)();
+    msj += Proyectos.cabeceraTable();
+    vector.forEach(e => msj += Proyectos.cuerpoTr(e))
+    msj += Proyectos.pieTable();
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar( "Listado de proyectos", msj )
@@ -218,10 +168,10 @@ Proyectos.imprimeProyectos = function (vector) {
  * junto con las personas asignadas a los mismos.
  * @param {Vector_de_proyectos} vector Vector con los datos de los proyectos a mostrar
  */
-Proyectos.imprimeProyectosConPersonas = function (vector) {
+Proyectos.imprimeConPersonas = function (vector) {
     //console.log( vector ) // Para comprobar lo que hay en vector
     let msj = "";
-    vector.forEach(e => msj += eval(Proyectos.FN_ProyectoConPersonas)(e))
+    vector.forEach(e => msj += Proyectos.cuerpoConPersonasTr(e))
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar( "Listado de proyectos con personas", msj )
@@ -234,7 +184,7 @@ Proyectos.imprimeProyectosConPersonas = function (vector) {
  * @returns True
  */
 Proyectos.listar = function () {
-    this.recuperaProyectos(this.imprimeProyectos);
+    this.recupera(this.imprime);
 }
 
 /**
@@ -243,5 +193,5 @@ Proyectos.listar = function () {
  * @returns True
  */
 Proyectos.listarConPersonas = function () {
-    this.recuperaProyectosConPersonas(this.imprimeProyectosConPersonas);
+    this.recuperaConPersonas(this.imprimeConPersonas);
 }

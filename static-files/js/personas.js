@@ -16,16 +16,6 @@ Personas.ARTICLE_LISTAR = "personas-listar"
 Personas.ARTICLE_MOSTRAR = "personas-mostrar"
 
 
-
-// Mostrar como DIV: descomentar si se quiere mostrar como DIV y comentar las de TABLE
-//Personas.FN_CABECERA="Personas.personasCabeceraDIV"
-//Personas.FN_PERSONA="Personas.personaDIV"
-//Personas.FN_PIE="Personas.personasPieDIV"
-
-// Mostrar como TABLE: descomentar si se quiere mostrar como TABLE y comentar las de DIV
-Personas.FN_CABECERA = "Personas.personasCabeceraTABLE"
-Personas.FN_PERSONA = "Personas.personaTR"
-Personas.FN_PIE = "Personas.personasPieTABLE"
 /**
  * Función que recuperar todas las personas llamando al MS Personas
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
@@ -74,39 +64,6 @@ Personas.recuperaUnaPersona = async function (idPersona, callBackFn) {
 }
 
 
-// Funciones para mostrar como DIV
-/**
- * Cabecera del div
- * @returns Cadena con la cabecera del div
- */
-Personas.personasCabeceraDIV = function () {
-    return "<div>";
-}
-
-/**
- * Muestra todos los datos de la persona como un DIV
- * @param {persona} p Datos de la persona a mostrar 
- * @returns Cadena con los datos de la personas incluidos en un DIV
- */
-Personas.personaDIV = function (p) {
-    return `<div>
-    <p><b>ID</b>: ${p.ref['@ref'].id}</p>
-    <p><b>Nombre</b>: ${p.data.nombre}</p>
-    <p><b>Apelidos</b>: ${p.data.apellidos}</p>
-    <p><b>E-mail</b>: ${p.data.email}</p>
-    <p><b>En plantilla desde</b>: ${p.data.año_entrada}</p>
-    </div>
-    `;
-}
-
-/**
- * Función para escribir el pie del DIV
- * @returns Pie del div
- */
-Personas.personasPieDIV = function () {
-    return "</div>";
-}
-
 // Funciones para mostrar como TABLE
 /**
  * Crea la cabecera para mostrar la info como tabla
@@ -152,11 +109,11 @@ Personas.personasPieTABLE = function () {
 Personas.imprimePersonas = function (vector) {
     // console.log(vector) // Para comprobar lo que hay en vector
 
-    // Compongo el contenido que se va a mostrar dentro del DIV
-    let msj = "";
-    msj += eval(Personas.FN_CABECERA)();
-    vector.forEach(e => msj += eval(Personas.FN_PERSONA)(e))
-    msj += eval(Personas.FN_PIE)();
+    // Compongo el contenido que se va a mostrar dentro de la tabla
+    let msj = ""
+    msj += Personas.personasCabeceraTABLE()
+    vector.forEach(e => msj += Personas.personaTR(e))
+    msj += Personas.personasPieTABLE()
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar( "Listado de personas", msj )
@@ -170,9 +127,9 @@ Personas.imprimePersonas = function (vector) {
 Personas.imprimeUnaPersona = function (persona) {
     // console.log(persona) // Para comprobar lo que hay en vector
     let msj = "";
-    msj += eval(Personas.FN_CABECERA)();
-    msj += eval(Personas.FN_PERSONA)(persona);
-    msj += eval(Personas.FN_PIE)();
+    msj += Personas.personasCabeceraTABLE();
+    msj += Personas.personaTR(persona);
+    msj += Personas.personasPieTABLE();
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar( "Mostrar una persona", msj )
 }
