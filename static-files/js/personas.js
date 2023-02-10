@@ -158,10 +158,7 @@ Personas.imprimePersonas = function (vector) {
     msj += eval(Personas.FN_PIE)();
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
-    Frontend.Article.borrar()
-    Frontend.Article.aniadirTitulo("Listado de personas")
-    Frontend.Article.aniadirContenido( msj )
-    Frontend.Article.mostrar()
+    Frontend.Article.actualizar( "Listado de personas", msj )
 }
 
 /**

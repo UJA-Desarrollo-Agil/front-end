@@ -207,10 +207,8 @@ Proyectos.imprimeProyectos = function (vector) {
     msj += eval(Proyectos.FN_PIE)();
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
-    Frontend.Article.borrar()
-        .aniadirTitulo("Listado de proyectos")
-        .aniadirContenido(msj)
-        .mostrar()
+    Frontend.Article.actualizar( "Listado de proyectos", msj )
+
 }
 
 
@@ -226,10 +224,8 @@ Proyectos.imprimeProyectosConPersonas = function (vector) {
     vector.forEach(e => msj += eval(Proyectos.FN_ProyectoConPersonas)(e))
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
-    Frontend.Article.borrar()
-        .aniadirTitulo("Listado de proyectos con personas")
-        .aniadirContenido(msj)
-        .Article.mostrar()
+    Frontend.Article.actualizar( "Listado de proyectos con personas", msj )
+
 }
 
 

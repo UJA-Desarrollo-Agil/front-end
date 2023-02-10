@@ -148,3 +148,16 @@ Frontend.Article.mostrar = function () {
         .aniadirClase(Frontend.ID_SECCION_PRINCIPAL, Frontend.CLASS_MOSTRAR)
 
 }
+/**
+ * Cambia toda la información del article
+ * @param {String} titulo Información para el título del article 
+ * @param {String} contenido INformacion para el contenido del article
+ * @returns El propio Article para concatenar llamadas
+ */
+Frontend.Article.actualizar = function (titulo, contenido) {
+    this.borrar()
+        .aniadirTitulo(titulo)
+        .aniadirContenido(contenido)
+        .mostrar()
+    return this;
+}
