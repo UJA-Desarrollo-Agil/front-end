@@ -6,24 +6,28 @@
  */
 
 /// Espacio de nombres
-let Frontend={};
+let Frontend = {};
 
 
 /// Dirección del MS que funciona como API_GATEWAY
 Frontend.API_GATEWAY = "http://localhost:8001"
 
-/// Algunas constantes relacionadas con CSS
+/// Algunas constantes relacionadas con CSS y HTML
 Frontend.CLASS_MOSTRAR = "mostrar"
 Frontend.CLASS_OCULTAR = "ocultar"
+
+Frontend.ID_SECCION_PRINCIPAL = "seccion-principal"
+Frontend.ID_SECCION_PRINCIPAL_TITULO = "seccion-principal-titulo"
+Frontend.ID_SECCION_PRINCIPAL_CONTENIDO = "seccion-principal-contenido"
 
 /**
  * BUsca el nombre de un parámetro pasado por la URL, con el formato ?nombreParametro=valor
  * @param {String} nombreParametro 
  * @returns El valor del parámetro si existe; si no, devuelve NULL
  */
-Frontend.recuperaParametro=function (nombreParametro) {
+Frontend.recuperaParametro = function (nombreParametro) {
     const cad = location.search.substring(1);
-    const params=[]
+    const params = []
     if (cad.length) {
         let parejas = [];
         parejas = cad.split("&");
@@ -35,7 +39,7 @@ Frontend.recuperaParametro=function (nombreParametro) {
                 .replace(/%2C/g, ",");
         }
     }
-    return (typeof params[nombreParametro]==="undefined")?NULL:params[nombreParametro]
+    return (typeof params[nombreParametro] === "undefined") ? NULL : params[nombreParametro]
 }
 
 
@@ -45,34 +49,102 @@ Frontend.recuperaParametro=function (nombreParametro) {
  * @param {número} cantidad Cantidad que hay que devolver formateada
  * @returns La misma cantidad, pero con formato de euros.
  */
-Frontend.euros=function ( cantidad ) {
+Frontend.euros = function (cantidad) {
     return (new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(cantidad));
 }
 
+
+/// Objeto dentro Frontend para tratar con el contenido de Article
+Frontend.Article = {}
+
 /**
- * Oculta todos los article
+ * Borrar titulo del article
+ * @returns Frontend.Article para poder concatenar llamadas
  */
-Frontend.ocultarTodosArticles=function () {
-    const articles=document.getElementsByClassName( "seccion-principal" );
-    for( let i=0; i<articles.length; ++i ) {
-        let cadenaClase = articles[i].getAttribute( "class")
-        // Quito los espacios en blanco, las cadenas "mostrar" y "ocultar", y finalmente añado "mostrar"
-        cadenaClase=cadenaClase.split(" ") // Separo la cadena por " "
-            .filter(e=>e) // Quito las cadenas vacías que pudiera haber
-            .filter(e=>e!=this.CLASS_MOSTRAR) // Quito la cadena "mostrar"
-            .filter(e=>e!=this.CLASS_OCULTAR) // Quito la cadena "ocultar" (por si está, para que no se repita)
-            .concat(this.CLASS_OCULTAR) // Añado la cadena "ocultar"
-            .join(" ") // creo una sola cadena con todas las clases separadas por espacios
-        articles[i].setAttribute( "class", cadenaClase )
-    }
+Frontend.Article.borrarTitulo = function () {
+    document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO).innerHTML = "";
+    return this;
 }
 /**
- * Oculta todos los article menos el del ID que le pasamos
+ * Borrar contenido del article
+ * @returns Frontend.Article para poder concatenar llamadas
  */
-Frontend.ocultarTodosArticlesSalvo=function ( idArticle ) {
-    Frontend.ocultarTodosArticles();
-    let cadenaClase=document.getElementById( idArticle ).getAttribute( "class" )
-    // Quito la cadena "ocultar" y añado "mostrar"
-    cadenaClase=cadenaClase.replace(this.CLASS_OCULTAR,"")+this.CLASS_MOSTRAR
-    document.getElementById( idArticle ).setAttribute( "class", cadenaClase )
+Frontend.Article.borrarContenido = function () {
+    document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML = "";
+    return this;
+}
+
+/**
+ * Borrar titulo y contenido del article
+ * @returns Frontend para poder concatenar llamadas 
+ */
+Frontend.Article.borrar = function () {
+    return this.borrarTitulo().borrarContenido();
+}
+
+/**
+ * Añadir info al titulo del article
+ * @param {string} Texto Nuevo texto (en formato HTML) a añadir
+ * @returns Frontend para poder concatenar llamadas 
+ */
+Frontend.Article.aniadirTitulo = function (texto) {
+    document.getElementById(Frontend.ID_SECCION_PRINCIPAL_TITULO).innerHTML += "\n" + texto;
+    return this;
+}
+
+/**
+ * Añadir info al contenido del article
+ * @param {string} Texto Nuevo texto (en formato HTML) a añadir
+ * @returns Frontend para poder concatenar llamadas 
+ */
+Frontend.Article.aniadirContenido = function (texto) {
+    document.getElementById(Frontend.ID_SECCION_PRINCIPAL_CONTENIDO).innerHTML += "\n" + texto;
+    return this;
+}
+
+
+/**
+ * Quita a un elemento identificado por su ID la clase indicada por nombreClase
+ * @param {string} idElemento Nombre del id del elemento
+ * @param {string} nombreClase Nombre de la clase a quitar
+ */
+Frontend.quitarClase = function (idElemento, nombreClase) {
+    let elemento = document.getElementById(idElemento)
+    let clase = elemento.getAttribute("class")
+    clase = clase.split(" ") // Separo la cadena por " "
+        .filter(e => e) // Quito las cadenas vacías que pudiera haber
+        .filter(e => e != nombreClase) // Quito la cadena indicada por nombreClase
+        .join(" ") // creo una sola cadena con todas las clases separadas por espacios
+    elemento.setAttribute("class", clase)
+
+    return this;
+}
+
+/**
+ * Añade a un elemento identificado por su ID la clase indicada por nombreClase
+ * @param {string} idElemento Nombre del id del elemento
+ * @param {string} nombreClase Nombre de la clase a quitar
+ */
+Frontend.aniadirClase = function (idElemento, nombreClase) {
+    let elemento = document.getElementById(idElemento)
+    let clase = elemento.getAttribute("class")
+    clase = clase.split(" ") // Separo la cadena por " "
+        .filter(e => e) // Quito las cadenas vacías que pudiera haber
+        .filter(e => e != nombreClase) // Quito la cadena indicada por nombreClase, por si ya estuviera
+        .concat(nombreClase) // Añado la clase indicada en nombreClase
+        .join(" ") // creo una sola cadena con todas las clases separadas por espacios
+    elemento.setAttribute("class", clase)
+
+    return this;
+}
+
+/**
+ * Muestro el article
+ * @returns El propio Article para poder concatenar llamadas
+ */
+Frontend.Article.mostrar = function () {
+    let article = document.getElementById(Frontend.ID_SECCION_PRINCIPAL);
+    Frontend.quitarClase(Frontend.ID_SECCION_PRINCIPAL, Frontend.CLASS_OCULTAR)
+        .aniadirClase(Frontend.ID_SECCION_PRINCIPAL, Frontend.CLASS_MOSTRAR)
+
 }

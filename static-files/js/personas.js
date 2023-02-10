@@ -149,9 +149,6 @@ Personas.personasPieTABLE = function () {
  */
 
 Personas.imprimePersonas = function (vector) {
-    // La siguiente instrucción selecciona el primer elemento de clase seccion-principal-contenido que
-    // haya dentro del elemento ARTICLE_LISTAR
-    const div = document.getElementById(Personas.ARTICLE_LISTAR).getElementsByClassName("seccion-principal-contenido")[0];
     // console.log(vector) // Para comprobar lo que hay en vector
 
     // Compongo el contenido que se va a mostrar dentro del DIV
@@ -159,10 +156,12 @@ Personas.imprimePersonas = function (vector) {
     msj += eval(Personas.FN_CABECERA)();
     vector.forEach(e => msj += eval(Personas.FN_PERSONA)(e))
     msj += eval(Personas.FN_PIE)();
-    div.innerHTML = msj;
 
-    // Oculto TODOS los article menos el que quiero mostrar
-    Frontend.ocultarTodosArticlesSalvo( Personas.ARTICLE_LISTAR )
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.borrar()
+    Frontend.Article.aniadirTitulo("Listado de personas")
+    Frontend.Article.aniadirContenido( msj )
+    Frontend.Article.mostrar()
 }
 
 /**
