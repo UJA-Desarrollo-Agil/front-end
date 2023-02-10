@@ -16,7 +16,7 @@ const DIV_LISTADO = "listado"
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 async function recuperaProyectos(callBackFn) {
-    const url = FRONTEND.API_GATEWAY + "/proyectos/getTodos"
+    const url = Frontend.API_GATEWAY + "/proyectos/getTodos"
     const response = await fetch(url);
     const vectorProyectos = await response.json()
     callBackFn(vectorProyectos.data)
@@ -28,7 +28,7 @@ async function recuperaProyectos(callBackFn) {
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 async function recuperaProyectosConPersonas(callBackFn) {
-    const url = FRONTEND.API_GATEWAY  + "/proyectos/getTodosConPersonas"
+    const url = Frontend.API_GATEWAY  + "/proyectos/getTodosConPersonas"
     const response = await fetch(url);
     const vectorProyectos = await response.json()
     callBackFn(vectorProyectos.data)
@@ -104,7 +104,7 @@ function proyectoTR( p ) {
     const d=p.data
     const ini=d.inicio;
     const fin=d.final;
-    const presupuesto=FRONTEND.euros(d.presupuesto);
+    const presupuesto=Frontend.euros(d.presupuesto);
 
     return `<tr title="${p.ref['@ref'].id}">
     <td>${d.alias}</td>
@@ -127,7 +127,7 @@ function proyectoConPersonasTR( p ) {
     const d=p.data
     const ini=d.inicio;
     const fin=d.final;
-    const presupuesto=FRONTEND.euros(d.presupuesto);
+    const presupuesto=Frontend.euros(d.presupuesto);
     let msj= eval(FN_CABECERA)();
     msj+=`<tr>
     <td>${d.alias}</td>

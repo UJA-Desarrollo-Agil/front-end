@@ -3,6 +3,10 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-article.seccion-principal {
+
+.mostrar {
+    display: block;
+}
+.ocultar {
     display: none;
 }

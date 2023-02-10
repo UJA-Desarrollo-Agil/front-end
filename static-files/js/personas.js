@@ -23,9 +23,9 @@ Personas.ARTICLE_MOSTRAR = "personas-mostrar"
 //Personas.FN_PIE="personasPieDIV"
 
 // Mostrar como TABLE: descomentar si se quiere mostrar como TABLE y comentar las de DIV
-Personas.FN_CABECERA = "personasCabeceraTABLE"
-Personas.FN_PERSONA = "personaTR"
-Personas.FN_PIE = "personasPieTABLE"
+Personas.FN_CABECERA = "Personas.personasCabeceraTABLE"
+Personas.FN_PERSONA = "Personas.personaTR"
+Personas.FN_PIE = "Personas.personasPieTABLE"
 /**
  * Función que recuperar todas las personas llamando al MS Personas
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
@@ -33,14 +33,14 @@ Personas.FN_PIE = "personasPieTABLE"
 
 Personas.recuperaPersonas = async function (callBackFn) {
     try {
-        const url = FRONTEND.API_GATEWAY + "/personas/getTodas"
+        const url = Frontend.API_GATEWAY + "/personas/getTodas"
         const response = await fetch(url)
         if (response) {
-            const vectorPersonas = response.json()
+            const vectorPersonas = await response.json()
             callBackFn(vectorPersonas.data)
         }
     } catch (error) {
-        alert("Error: No se han podido acceder al microservicio Personas" )
+        alert("Error: No se han podido acceder al API Gateway" )
         console.error(error)
         //throw error
     }
@@ -52,15 +52,15 @@ Personas.recuperaPersonas = async function (callBackFn) {
  */
 Personas.recuperaUnaPersona = async function (callBackFn) {
     try {
-        const idPersona = FRONTEND.recuperaParametro("id")
-        const url = FRONTEND.API_GATEWAY + "/personas/getPorId/" + idPersona
+        const idPersona = Frontend.recuperaParametro("id")
+        const url = Frontend.API_GATEWAY + "/personas/getPorId/" + idPersona
         const response = await fetch(url);
         if (response) {
-            const persona = response.json()
+            const persona = await response.json()
             callBackFn(persona)
         }
     } catch (error) {
-        alert("Error: No se han podido acceder al microservicio Personas" )
+        alert("Error: No se han podido acceder al API Gateway" )
         console.error(error)
     }
 }
@@ -146,11 +146,16 @@ Personas.imprimePersonas = function (vector) {
     // haya dentro del elemento ARTICLE_LISTAR
     const div = document.getElementById(Personas.ARTICLE_LISTAR).getElementsByClassName("seccion-principal-contenido")[0];
     // console.log(vector) // Para comprobar lo que hay en vector
+
+    // Compongo el contenido que se va a mostrar dentro del DIV
     let msj = "";
-    msj += eval(FN_CABECERA)();
-    vector.forEach(e => msj += eval(FN_PERSONA)(e))
-    msj += eval(FN_PIE)();
+    msj += eval(Personas.FN_CABECERA)();
+    vector.forEach(e => msj += eval(Personas.FN_PERSONA)(e))
+    msj += eval(Personas.FN_PIE)();
     div.innerHTML = msj;
+
+    // Oculto TODOS los article menos el que quiero mostrar
+    Frontend.ocultarTodosArticlesSalvo( Personas.ARTICLE_LISTAR )
 }
 
 /**
@@ -162,9 +167,9 @@ Personas.imprimeUnaPersona = function (persona) {
     const div = document.getElementById(DIV_UNA_PERSONA);
     // console.log(persona) // Para comprobar lo que hay en vector
     let msj = "";
-    msj += eval(FN_CABECERA)();
-    msj += eval(FN_PERSONA)(persona);
-    msj += eval(FN_PIE)();
+    msj += eval(Personas.FN_CABECERA)();
+    msj += eval(Personas.FN_PERSONA)(persona);
+    msj += eval(Personas.FN_PIE)();
     div.innerHTML = msj;
 }
 
