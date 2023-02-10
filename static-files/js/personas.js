@@ -18,9 +18,9 @@ Personas.ARTICLE_MOSTRAR = "personas-mostrar"
 
 
 // Mostrar como DIV: descomentar si se quiere mostrar como DIV y comentar las de TABLE
-//Personas.FN_CABECERA="personasCabeceraDIV"
-//Personas.FN_PERSONA="personaDIV"
-//Personas.FN_PIE="personasPieDIV"
+//Personas.FN_CABECERA="Personas.personasCabeceraDIV"
+//Personas.FN_PERSONA="Personas.personaDIV"
+//Personas.FN_PIE="Personas.personasPieDIV"
 
 // Mostrar como TABLE: descomentar si se quiere mostrar como TABLE y comentar las de DIV
 Personas.FN_CABECERA = "Personas.personasCabeceraTABLE"
@@ -195,5 +195,4 @@ Personas.listar = function () {
  */
 Personas.main_mostrar = function () {
     recuperaUnaPersona(imprimeUnaPersona);
-    return true;
 }
