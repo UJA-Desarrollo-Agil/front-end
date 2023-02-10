@@ -54,12 +54,13 @@ Personas.recuperaPersonas = async function (callBackFn) {
 }
 
 /**
- * Función que recuperar todas las personas llamando al MS Personas
+ * Función que recuperar todas las personas llamando al MS Personas. 
+ * Posteriormente, llama a la función callBackFn para trabajar con los datos recuperados.
+ * @param {String} idPersona Identificador de la persona a mostrar
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-Personas.recuperaUnaPersona = async function (callBackFn) {
+Personas.recuperaUnaPersona = async function (idPersona, callBackFn) {
     try {
-        const idPersona = Frontend.recuperaParametro("id")
         const url = Frontend.API_GATEWAY + "/personas/getPorId/" + idPersona
         const response = await fetch(url);
         if (response) {
@@ -167,13 +168,13 @@ Personas.imprimePersonas = function (vector) {
  */
 
 Personas.imprimeUnaPersona = function (persona) {
-    const div = document.getElementById(DIV_UNA_PERSONA);
     // console.log(persona) // Para comprobar lo que hay en vector
     let msj = "";
     msj += eval(Personas.FN_CABECERA)();
     msj += eval(Personas.FN_PERSONA)(persona);
     msj += eval(Personas.FN_PIE)();
-    div.innerHTML = msj;
+    // Borro toda la info de Article y la sustituyo por la que me interesa
+    Frontend.Article.actualizar( "Mostrar una persona", msj )
 }
 
 
@@ -187,8 +188,9 @@ Personas.listar = function () {
 
 /**
  * Función principal para mostrar los datos de una persona desde el MS y, posteriormente, imprimirla.
+ * @param {String} idPersona Identificador de la persona a mostrar
  * @returns True
  */
-Personas.main_mostrar = function () {
-    recuperaUnaPersona(imprimeUnaPersona);
+Personas.mostrar = function (idPersona) {
+    this.recuperaUnaPersona(idPersona, this.imprimeUnaPersona);
 }
