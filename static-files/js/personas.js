@@ -5,51 +5,65 @@
  * @date 03-feb-2023
  */
 
-/// Id del div en el que se debe escribir el listado de personas
-const DIV_LISTADO = "listado"
+
+/// Creo el espacio de nombres
+let Personas = {};
+
+/// Id del article en el que se debe escribir el listado de personas
+Personas.ARTICLE_LISTAR = "personas-listar"
 
 /// Id del div en el que se deben escribir los detalles de una persona
-const DIV_UNA_PERSONA = "detalles"
+Personas.ARTICLE_MOSTRAR = "personas-mostrar"
 
 
+
+// Mostrar como DIV: descomentar si se quiere mostrar como DIV y comentar las de TABLE
+//Personas.FN_CABECERA="personasCabeceraDIV"
+//Personas.FN_PERSONA="personaDIV"
+//Personas.FN_PIE="personasPieDIV"
+
+// Mostrar como TABLE: descomentar si se quiere mostrar como TABLE y comentar las de DIV
+Personas.FN_CABECERA = "personasCabeceraTABLE"
+Personas.FN_PERSONA = "personaTR"
+Personas.FN_PIE = "personasPieTABLE"
 /**
  * Función que recuperar todas las personas llamando al MS Personas
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-async function recuperaPersonas(callBackFn) {
-    const url = FRONTEND.API_GATEWAY + "/personas/getTodas"
-    const response = await fetch(url);
-    const vectorPersonas = await response.json()
-    callBackFn(vectorPersonas.data)
+
+Personas.recuperaPersonas = async function (callBackFn) {
+    try {
+        const url = FRONTEND.API_GATEWAY + "/personas/getTodas"
+        const response = await fetch(url)
+        if (response) {
+            const vectorPersonas=response.json()
+            callBackFn(vectorPersonas.data)
+        }
+    } catch (error) {
+        alert("Error: No se han podido recuperar datos de la BBDD", error)
+        //throw error
+    }
 }
 
 /**
  * Función que recuperar todas las personas llamando al MS Personas
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
-async function recuperaUnaPersona(callBackFn) {
+Personas.recuperaUnaPersona = async function (callBackFn) {
     const idPersona = FRONTEND.recuperaParametro("id")
     const url = FRONTEND.API_GATEWAY + "/personas/getPorId/" + idPersona
     const response = await fetch(url);
     const persona = await response.json()
     callBackFn(persona)
 }
-// Mostrar como DIV: descomentar si se quiere mostrar como DIV y comentar las de TABLE
-//const FN_CABECERA="personasCabeceraDIV"
-//const FN_PERSONA="personaDIV"
-//const FN_PIE="personasPieDIV"
 
-// Mostrar como TABLE: descomentar si se quiere mostrar como TABLE y comentar las de DIV
-const FN_CABECERA = "personasCabeceraTABLE"
-const FN_PERSONA = "personaTR"
-const FN_PIE = "personasPieTABLE"
 
 // Funciones para mostrar como DIV
 /**
  * Cabecera del div
  * @returns Cadena con la cabecera del div
  */
-function personasCabeceraDIV() {
+Personas.personasCabeceraDIV = function () {
     return "<div>";
 }
 
@@ -58,7 +72,7 @@ function personasCabeceraDIV() {
  * @param {persona} p Datos de la persona a mostrar 
  * @returns Cadena con los datos de la personas incluidos en un DIV
  */
-function personaDIV(p) {
+Personas.personaDIV = function (p) {
     return `<div>
     <p><b>ID</b>: ${p.ref['@ref'].id}</p>
     <p><b>Nombre</b>: ${p.data.nombre}</p>
@@ -73,7 +87,7 @@ function personaDIV(p) {
  * Función para escribir el pie del DIV
  * @returns Pie del div
  */
-function personasPieDIV() {
+Personas.personasPieDIV = function () {
     return "</div>";
 }
 
@@ -82,7 +96,7 @@ function personasPieDIV() {
  * Crea la cabecera para mostrar la info como tabla
  * @returns Cabecera de la tabla
  */
-function personasCabeceraTABLE() {
+Personas.personasCabeceraTABLE = function () {
     return `<table class="listado-personas">
         <thead>
         <th>Nombre</th><th>Apellidos</th><th>eMail</th><th>Año contratación</th>
@@ -96,7 +110,7 @@ function personasCabeceraTABLE() {
  * @param {persona} p Datos de la persona a mostrar
  * @returns Cadena conteniendo todo el elemento TR que muestra la persona.
  */
-function personaTR(p) {
+Personas.personaTR = function (p) {
     return `<tr title="${p.ref['@ref'].id}">
     <td>${p.data.nombre}</td>
     <td>${p.data.apellidos}</td>
@@ -110,7 +124,7 @@ function personaTR(p) {
  * Pie de la tabla en la que se muestran las personas
  * @returns Cadena con el pie de la tabla
  */
-function personasPieTABLE() {
+Personas.personasPieTABLE = function () {
     return "</tbody></table>";
 }
 
@@ -119,8 +133,10 @@ function personasPieTABLE() {
  * @param {Vector_de_personas} vector Vector con los datos de las personas a mostrar
  */
 
-function imprimePersonas(vector) {
-    const div = document.getElementById(DIV_LISTADO);
+Personas.imprimePersonas = function (vector) {
+    // La siguiente instrucción selecciona el primer elemento de clase seccion-principal-contenido que
+    // haya dentro del elemento ARTICLE_LISTAR
+    const div = document.getElementById(Personas.ARTICLE_LISTAR).getElementsByClassName("seccion-principal-contenido")[0];
     // console.log(vector) // Para comprobar lo que hay en vector
     let msj = "";
     msj += eval(FN_CABECERA)();
@@ -134,7 +150,7 @@ function imprimePersonas(vector) {
  * @param {Persona} persona Datos de la persona a mostrar
  */
 
-function imprimeUnaPersona(persona) {
+Personas.imprimeUnaPersona = function (persona) {
     const div = document.getElementById(DIV_UNA_PERSONA);
     // console.log(persona) // Para comprobar lo que hay en vector
     let msj = "";
@@ -147,11 +163,9 @@ function imprimeUnaPersona(persona) {
 
 /**
  * Función principal para recuperar las personas desde el MS y, posteriormente, imprimirlas.
- * @returns True
  */
-function main_listar() {
-    recuperaPersonas(imprimePersonas);
-    return true;
+Personas.listar = function () {
+    Personas.recuperaPersonas(Personas.imprimePersonas);
 }
 
 
@@ -159,7 +173,7 @@ function main_listar() {
  * Función principal para mostrar los datos de una persona desde el MS y, posteriormente, imprimirla.
  * @returns True
  */
-function main_mostrar() {
+Personas.main_mostrar = function () {
     recuperaUnaPersona(imprimeUnaPersona);
     return true;
 }
