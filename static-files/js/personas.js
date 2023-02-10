@@ -36,11 +36,12 @@ Personas.recuperaPersonas = async function (callBackFn) {
         const url = FRONTEND.API_GATEWAY + "/personas/getTodas"
         const response = await fetch(url)
         if (response) {
-            const vectorPersonas=response.json()
+            const vectorPersonas = response.json()
             callBackFn(vectorPersonas.data)
         }
     } catch (error) {
-        alert("Error: No se han podido recuperar datos de la BBDD", error)
+        alert("Error: No se han podido acceder al microservicio Personas" )
+        console.error(error)
         //throw error
     }
 }
@@ -50,11 +51,18 @@ Personas.recuperaPersonas = async function (callBackFn) {
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 Personas.recuperaUnaPersona = async function (callBackFn) {
-    const idPersona = FRONTEND.recuperaParametro("id")
-    const url = FRONTEND.API_GATEWAY + "/personas/getPorId/" + idPersona
-    const response = await fetch(url);
-    const persona = await response.json()
-    callBackFn(persona)
+    try {
+        const idPersona = FRONTEND.recuperaParametro("id")
+        const url = FRONTEND.API_GATEWAY + "/personas/getPorId/" + idPersona
+        const response = await fetch(url);
+        if (response) {
+            const persona = response.json()
+            callBackFn(persona)
+        }
+    } catch (error) {
+        alert("Error: No se han podido acceder al microservicio Personas" )
+        console.error(error)
+    }
 }
 
 
