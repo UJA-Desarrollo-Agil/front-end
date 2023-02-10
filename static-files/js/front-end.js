@@ -12,6 +12,10 @@ let Frontend={};
 /// Dirección del MS que funciona como API_GATEWAY
 Frontend.API_GATEWAY = "http://localhost:8001"
 
+/// Algunas constantes relacionadas con CSS
+Frontend.CLASS_MOSTRAR = "mostrar"
+Frontend.CLASS_OCULTAR = "ocultar"
+
 /**
  * BUsca el nombre de un parámetro pasado por la URL, con el formato ?nombreParametro=valor
  * @param {String} nombreParametro 
@@ -52,10 +56,13 @@ Frontend.ocultarTodosArticles=function () {
     const articles=document.getElementsByClassName( "seccion-principal" );
     for( let i=0; i<articles.length; ++i ) {
         let cadenaClase = articles[i].getAttribute( "class")
-        // Quito los espacios en blanco y la cadena "mostrar" y "ocultar"
-        cadenaClase=cadenaClase.split(" ").filter(e=>e).filter(e=>e!="mostrar" && e!="ocultar").join(" ")
-        // Añado la cadena ocultar
-        cadenaClase+=" ocultar"
+        // Quito los espacios en blanco, las cadenas "mostrar" y "ocultar", y finalmente añado "mostrar"
+        cadenaClase=cadenaClase.split(" ") // Separo la cadena por " "
+            .filter(e=>e) // Quito las cadenas vacías que pudiera haber
+            .filter(e=>e!=this.CLASS_MOSTRAR) // Quito la cadena "mostrar"
+            .filter(e=>e!=this.CLASS_OCULTAR) // Quito la cadena "ocultar" (por si está, para que no se repita)
+            .concat(this.CLASS_OCULTAR) // Añado la cadena "ocultar"
+            .join(" ") // creo una sola cadena con todas las clases separadas por espacios
         articles[i].setAttribute( "class", cadenaClase )
     }
 }
@@ -66,6 +73,6 @@ Frontend.ocultarTodosArticlesSalvo=function ( idArticle ) {
     Frontend.ocultarTodosArticles();
     let cadenaClase=document.getElementById( idArticle ).getAttribute( "class" )
     // Quito la cadena "ocultar" y añado "mostrar"
-    cadenaClase=cadenaClase.replace("ocultar","")+"mostrar"
+    cadenaClase=cadenaClase.replace(this.CLASS_OCULTAR,"")+this.CLASS_MOSTRAR
     document.getElementById( idArticle ).setAttribute( "class", cadenaClase )
 }
