@@ -9,19 +9,13 @@
 /// Creo el espacio de nombres
 let Personas = {};
 
-/// Id del article en el que se debe escribir el listado de personas
-Personas.ARTICLE_LISTAR = "personas-listar"
-
-/// Id del div en el que se deben escribir los detalles de una persona
-Personas.ARTICLE_MOSTRAR = "personas-mostrar"
-
 
 /**
  * Función que recuperar todas las personas llamando al MS Personas
  * @param {función} callBackFn Función a la que se llamará una vez recibidos los datos.
  */
 
-Personas.recuperaPersonas = async function (callBackFn) {
+Personas.recupera = async function (callBackFn) {
     let response=null
 
     // Intento conectar con el microservicio personas
@@ -69,7 +63,7 @@ Personas.recuperaUnaPersona = async function (idPersona, callBackFn) {
  * Crea la cabecera para mostrar la info como tabla
  * @returns Cabecera de la tabla
  */
-Personas.personasCabeceraTABLE = function () {
+Personas.cabeceraTABLE = function () {
     return `<table class="listado-personas">
         <thead>
         <th>Nombre</th><th>Apellidos</th><th>eMail</th><th>Año contratación</th>
@@ -83,7 +77,7 @@ Personas.personasCabeceraTABLE = function () {
  * @param {persona} p Datos de la persona a mostrar
  * @returns Cadena conteniendo todo el elemento TR que muestra la persona.
  */
-Personas.personaTR = function (p) {
+Personas.cuerpoTr = function (p) {
     return `<tr title="${p.ref['@ref'].id}">
     <td>${p.data.nombre}</td>
     <td>${p.data.apellidos}</td>
@@ -97,7 +91,7 @@ Personas.personaTR = function (p) {
  * Pie de la tabla en la que se muestran las personas
  * @returns Cadena con el pie de la tabla
  */
-Personas.personasPieTABLE = function () {
+Personas.pieTable = function () {
     return "</tbody></table>";
 }
 
@@ -106,14 +100,14 @@ Personas.personasPieTABLE = function () {
  * @param {Vector_de_personas} vector Vector con los datos de las personas a mostrar
  */
 
-Personas.imprimePersonas = function (vector) {
+Personas.imprime = function (vector) {
     // console.log(vector) // Para comprobar lo que hay en vector
 
     // Compongo el contenido que se va a mostrar dentro de la tabla
     let msj = ""
-    msj += Personas.personasCabeceraTABLE()
-    vector.forEach(e => msj += Personas.personaTR(e))
-    msj += Personas.personasPieTABLE()
+    msj += Personas.cabeceraTABLE()
+    vector.forEach(e => msj += Personas.cuerpoTr(e))
+    msj += Personas.pieTable()
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar( "Listado de personas", msj )
@@ -127,9 +121,9 @@ Personas.imprimePersonas = function (vector) {
 Personas.imprimeUnaPersona = function (persona) {
     // console.log(persona) // Para comprobar lo que hay en vector
     let msj = "";
-    msj += Personas.personasCabeceraTABLE();
-    msj += Personas.personaTR(persona);
-    msj += Personas.personasPieTABLE();
+    msj += Personas.cabeceraTABLE();
+    msj += Personas.cuerpoTr(persona);
+    msj += Personas.pieTable();
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar( "Mostrar una persona", msj )
 }
@@ -139,7 +133,7 @@ Personas.imprimeUnaPersona = function (persona) {
  * Función principal para recuperar las personas desde el MS y, posteriormente, imprimirlas.
  */
 Personas.listar = function () {
-    Personas.recuperaPersonas(Personas.imprimePersonas);
+    Personas.recupera(Personas.imprime);
 }
 
 
