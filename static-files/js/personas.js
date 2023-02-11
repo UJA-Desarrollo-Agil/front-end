@@ -324,7 +324,6 @@ Personas.cancelar = function () {
     this.deshabilitarCamposEditables()
     this.ocultarOcionesTerciariasEditar()
     this.mostrarOpcionesSecundarias()
-
 }
 
 
