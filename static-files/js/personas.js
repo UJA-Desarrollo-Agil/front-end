@@ -162,49 +162,111 @@ Personas.mostrar = function (idPersona) {
 
 
 /**
- * Establece disable = false en los campos editables
+ * Establece disable = habilitando en los campos editables
+ * @param {boolean} Deshabilitando Indica si queremos deshabilitar o habilitar los campos
  * @returns El propio objeto Personas, para concatenar llamadas
  */
-Personas.habilitarCamposEditables = function () {
+Personas.habilitarDeshabilitarCamposEditables = function ( deshabilitando ) {
+    deshabilitando = (typeof deshabilitando==="undefined" || deshabilitando===null)?true:deshabilitando
     for (let campo in Personas.form) {
-        document.getElementById(Personas.form[campo]).disabled = false
+        document.getElementById(Personas.form[campo]).disabled = deshabilitando
     }
     return this
 }
 
+
+/**
+ * Establece disable = true en los campos editables
+ * @returns El propio objeto Personas, para concatenar llamadas
+ */
+Personas.deshabilitarCamposEditables = function ( ) {
+    Personas.habilitarDeshabilitarCamposEditables( true )
+    return this
+}
+
+
+/**
+ * Establece disable = false en los campos editables
+ * @returns El propio objeto Personas, para concatenar llamadas
+ */
+Personas.habilitarCamposEditables = function ( ) {
+    Personas.habilitarDeshabilitarCamposEditables( false )
+    return this
+}
+
+
+/**
+ * ????Muestra las opciones que tiene el usuario cuando selecciona Editar
+ * @returns El propio objeto Personas, para concatenar llamadas
+ */
+Personas.opcionesMostrarOcultar = function ( classname, mostrando ) {
+    let opciones = document.getElementsByClassName(classname)
+    let claseQuitar=mostrando?Frontend.CLASS_OCULTAR:Frontend.CLASS_MOSTRAR
+    let claseAniadir=!mostrando?Frontend.CLASS_OCULTAR:Frontend.CLASS_MOSTRAR
+    
+    for (let i = 0; i < opciones.length; ++i) {
+        Frontend.quitarClase(opciones[i], claseQuitar)
+            .aniadirClase(opciones[i], claseAniadir)
+    }
+    return this
+}
 
 /**
  * Oculta todas las opciones secundarias
  * @returns El propio objeto para encadenar llamadas
  */
 Personas.ocultarOpcionesSecundarias = function () {
-    let opciones = document.getElementsByClassName("opcion-secundaria")
-    for (let i = 0; i < opciones.length; ++i) {
-        Frontend.quitarClase(opciones[i], Frontend.CLASS_MOSTRAR)
-            .aniadirClase(opciones[i], Frontend.CLASS_OCULTAR)
-    }
+    this.opcionesMostrarOcultar("opcion-secundaria", false )
     return this
 }
+
+
+/**
+ * Muestra todas las opciones secundarias
+ * @returns El propio objeto para encadenar llamadas
+ */
+Personas.mostrarOpcionesSecundarias = function () {
+    this.opcionesMostrarOcultar("opcion-secundaria", true )
+    return this
+}
+
 
 /**
  * Muestra las opciones que tiene el usuario cuando selecciona Editar
  * @returns El propio objeto Personas, para concatenar llamadas
  */
 Personas.mostrarOcionesTerciariasEditar = function () {
-    Personas.ocultarOpcionesSecundarias()
-    let opciones = document.getElementsByClassName("opcion-terciaria editar")
-    for (let i = 0; i < opciones.length; ++i) {
-        Frontend.quitarClase(opciones[i], Frontend.CLASS_OCULTAR)
-            .aniadirClase(opciones[i], Frontend.CLASS_MOSTRAR)
-    }
+    this.opcionesMostrarOcultar("opcion-terciaria editar", true)
     return this
 }
+
+
+/**
+ * Oculta las opciones que tiene el usuario cuando selecciona Editar
+ * @returns El propio objeto Personas, para concatenar llamadas
+ */
+Personas.ocultarOcionesTerciariasEditar = function () {
+    this.opcionesMostrarOcultar("opcion-terciaria editar", false)
+    return this
+}
+
 
 
 /**
  * Función que permite modificar los datos de una persona
  */
 Personas.editar = function () {
+    this.ocultarOpcionesSecundarias()
     this.mostrarOcionesTerciariasEditar()
     this.habilitarCamposEditables()
+}
+
+/**
+ * Función que permite cancelar la acción sobre los datos de una persona
+ */
+Personas.cancelar = function () {
+    this.deshabilitarCamposEditables()
+    this.ocultarOcionesTerciariasEditar()
+    this.mostrarOpcionesSecundarias()
+    
 }
