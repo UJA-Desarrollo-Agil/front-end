@@ -59,9 +59,9 @@ Personas.plantillaFormularioPersona.cuerpo = `         <tr title="${Personas.pla
                                     id="form-persona-anio" min="1950" max="2030" size="8" required
                                     value="### AÑO ENTRADA ###" /></td>
                             <td>
-                                <p><a href="javascript:Personas.editar()" class="opcion-secundaria mostrar">Editar</a></p>
-                                <p><a href="javascript:Personas.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></p>
-                                <p><a href="javascript:Personas.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></p>
+                                <div><a href="javascript:Personas.editar()" class="opcion-secundaria mostrar">Editar</a></div>
+                                <div><a href="javascript:Personas.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
+                                <div><a href="javascript:Personas.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></div>
                             </td>
                         </tr>
     `;
