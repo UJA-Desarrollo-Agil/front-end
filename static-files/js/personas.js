@@ -23,6 +23,7 @@ Personas.personaMostrada = null
 
 /// Plantilla para poner los datos de una persona en un TR
 Personas.plantillaFormularioPersona = {}
+// Tags que voy a usar para sustituir los campos
 Personas.plantillaFormularioPersona.tags = {
     "ID": "### ID ###",
     "NOMBRE": "### NOMBRE ###",
@@ -30,6 +31,8 @@ Personas.plantillaFormularioPersona.tags = {
     "EMAIL": "### EMAIL ###",
     "AÑO ENTRADA": "### AÑO ENTRADA ###",
 }
+
+// Cabecera de la tabla
 Personas.plantillaFormularioPersona.cabecera = `<table class="listado-personas">
                     <thead>
                         <th width="5%">Id</th>
@@ -41,6 +44,8 @@ Personas.plantillaFormularioPersona.cabecera = `<table class="listado-personas">
                     </thead>
                     <tbody>
     `;
+
+// Elemento TR que muestra los datos de una persona
 Personas.plantillaFormularioPersona.cuerpo = `         <tr title="${Personas.plantillaFormularioPersona.tags.ID}">
                             <td><input type="text" class="form-persona-elemento" disabled id="form-persona-id"
                                     value="${Personas.plantillaFormularioPersona.tags.ID}" /></td>
@@ -62,6 +67,8 @@ Personas.plantillaFormularioPersona.cuerpo = `         <tr title="${Personas.pla
                             </td>
                         </tr>
     `;
+
+// Pie de la tabla
 Personas.plantillaFormularioPersona.pie = `        </tbody>
              </table>
              `;
@@ -130,57 +137,6 @@ Personas.recuperaUnaPersona = async function (idPersona, callBackFn) {
 }
 
 
-// Funciones para mostrar como TABLE
-/**
- * Crea la cabecera para mostrar la info como tabla
- * @returns Cabecera de la tabla
- */
-Personas.cabeceraTABLE = function () {
-    return `< table class="listado-personas" >
-        <thead>
-        <th width="5%">Id</th>
-        <th width="15%">Nombre</th>
-        <th width="15%">Apellidos</th>
-        <th width="10%">eMail</th>
-        <th width="5%">Año contratación</th>
-        <th>Acciones</th>
-        </thead>
-        <tbody>
-    `;
-}
-
-/**
- * Muestra la información de cada persona en un elemento TR con sus correspondientes TD
- * @param {persona} p Datos de la persona a mostrar
-        * @returns Cadena conteniendo todo el elemento TR que muestra la persona.
-        */
-Personas.cuerpoTr = function (p) {
-    return `<tr title="${p.ref['@ref'].id}">
-            <td><input type="text" class="form-persona-elemento" disabled id="form-persona-id" value="${p.ref['@ref'].id}" /></td>
-            <td><input type="text" class="form-persona-elemento editable" disabled id="form-persona-nombre" required value="${p.data.nombre}" /></td>
-            <td><input type="text" class="form-persona-elemento editable" disabled id="form-persona-apellidos" value="${p.data.apellidos}" /></td>
-            <td><input type="email" class="form-persona-elemento editable" disabled id="form-persona-email" required value="${p.data.email}" /></td>
-            <td><input type="number" class="form-persona-elemento editable" disabled id="form-persona-anio"
-                min="1950" max="2030"
-                required value="${p.data.año_entrada}" /></td>
-            <td>
-                <div class="opcion-secundaria"><a href="javascript:Personas.editar()">Editar</a></div>
-                <div class="opcion-terciaria editar"><a href="javascript:Personas.guardar()">Guardar</a></div>
-                <div class="opcion-terciaria editar"><a href="javascript:Personas.cancelar()">Cancelar</a></div>
-            </td>
-        </tr>
-        `;
-}
-
-/**
- * Pie de la tabla en la que se muestran las personas
- * @returns Cadena con el pie de la tabla
- */
-Personas.pieTable = function () {
-    return "</tbody></table > ";
-}
-
-
 /**
  * Imprime los datos de una persona como una tabla usando la plantilla del formulario.
  * @param {persona} Persona Objeto con los datos de la persona
@@ -198,7 +154,7 @@ Personas.personaComoTable = function (persona) {
  * @param {Vector_de_personas} vector Vector con los datos de las personas a mostrar
  */
 
-Personas.imprime = function (vector) {
+Personas.imprimeMuchasPersonas = function (vector) {
     // console.log(vector) // Para comprobar lo que hay en vector
 
     // Compongo el contenido que se va a mostrar dentro de la tabla
@@ -248,7 +204,7 @@ Personas.recuperaDatosAlmacenados = function () {
  * Función principal para recuperar las personas desde el MS y, posteriormente, imprimirlas.
  */
 Personas.listar = function () {
-    Personas.recupera(Personas.imprime);
+    Personas.recupera(Personas.imprimeMuchasPersonas);
 }
 
 
