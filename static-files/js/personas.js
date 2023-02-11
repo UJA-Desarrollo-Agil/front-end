@@ -5,6 +5,7 @@
  * @date 03-feb-2023
  */
 
+"use strict";
 
 /// Creo el espacio de nombres
 let Personas = {};
@@ -16,6 +17,9 @@ Personas.form = {
     EMAIL: "form-persona-email",
     ANIO: "form-persona-anio",
 }
+
+/// Objeto para almacenar los datos de la persona que se está mostrando
+Personas.personaMostrada=null
 
 /**
  * Función que recuperar todas las personas llamando al MS Personas
@@ -141,8 +145,28 @@ Personas.imprimeUnaPersona = function (persona) {
     msj += Personas.pieTable();
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Mostrar una persona", msj)
+
+    // Actualiza el objeto que guarda los datos mostrados
+    Personas.almacenaDatos( persona )
 }
 
+/**
+ * Almacena los datos de la persona que se está mostrando
+ * @param {Persona} persona Datos de la persona a almacenar
+ */
+
+Personas.almacenaDatos = function (persona) {
+    Personas.personaMostrada=persona;
+}
+
+/**
+ * Recupera los valores almacenados de la persona que se estaba mostrando
+ * @return Datos de la persona a almacenada
+ */
+
+Personas.recuperaDatosAlmacenados = function () {
+    return this.personaMostrada;
+}
 
 /**
  * Función principal para recuperar las personas desde el MS y, posteriormente, imprimirlas.
@@ -251,7 +275,6 @@ Personas.ocultarOcionesTerciariasEditar = function () {
 }
 
 
-
 /**
  * Función que permite modificar los datos de una persona
  */
@@ -265,6 +288,7 @@ Personas.editar = function () {
  * Función que permite cancelar la acción sobre los datos de una persona
  */
 Personas.cancelar = function () {
+    this.imprimeUnaPersona( this.recuperaDatosAlmacenados() )
     this.deshabilitarCamposEditables()
     this.ocultarOcionesTerciariasEditar()
     this.mostrarOpcionesSecundarias()
