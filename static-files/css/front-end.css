@@ -6,9 +6,11 @@
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-
+#seccion-principal {
+    width: 100%;
+}
 .mostrar {
-    display: block;
+    display: inline-block;
 }
 
 .ocultar {

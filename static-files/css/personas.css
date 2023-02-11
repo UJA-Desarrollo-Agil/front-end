@@ -46,4 +46,8 @@ table.listado-personas td {
     margin: 0 auto 0 auto;
 }
 
+table.listado-personas {
+    width: 100%;
+}
+
 
