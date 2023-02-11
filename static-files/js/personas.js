@@ -89,8 +89,10 @@ Personas.cuerpoTr = function (p) {
     <td><input type="text" class="form-persona-elemento" disabled id="form-persona-id" value="${p.ref['@ref'].id}"/></td>
     <td><input type="text" class="form-persona-elemento editable" disabled id="form-persona-nombre" required value="${p.data.nombre}"/></td>
     <td><input type="text" class="form-persona-elemento editable" disabled id="form-persona-apellidos"  value="${p.data.apellidos}"/></td>
-    <td><input type="text" class="form-persona-elemento editable" disabled id="form-persona-email"  required value="${p.data.email}"/></td>
-    <td><input type="text" class="form-persona-elemento editable" disabled id="form-persona-anio"  required value="${p.data.año_entrada}"/></td>
+    <td><input type="email" class="form-persona-elemento editable" disabled id="form-persona-email"  required value="${p.data.email}"/></td>
+    <td><input type="number" class="form-persona-elemento editable" disabled id="form-persona-anio"  
+        min="1950" max="2030"
+        required value="${p.data.año_entrada}"/></td>
     <td>
         <div class="opcion-secundaria"><a href="javascript:Personas.editar()">Editar</a></div>
         <div class="opcion-terciaria editar"><a href="javascript:Personas.guardar()">Guardar</a></div>
