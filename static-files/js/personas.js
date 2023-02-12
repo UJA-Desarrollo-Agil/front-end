@@ -31,9 +31,13 @@ Personas.plantillaFormularioPersona.tags = {
     "EMAIL": "### EMAIL ###",
     "AÑO ENTRADA": "### AÑO ENTRADA ###",
 }
+// Cabecera del formulario
+Personas.plantillaFormularioPersona.cabeceraFormulario = `<form method='post' action='javascript:Personas.enviarFormulario()'>`;
+// Pie del formulario
+Personas.plantillaFormularioPersona.pieFormulario = `</form>`;
 
 // Cabecera de la tabla
-Personas.plantillaFormularioPersona.cabecera = `<table width="100%" class="listado-personas">
+Personas.plantillaFormularioPersona.cabeceraTabla = `<table width="100%" class="listado-personas">
                     <thead>
                         <th width="10%">Id</th>
                         <th width="20%">Nombre</th>
@@ -46,7 +50,7 @@ Personas.plantillaFormularioPersona.cabecera = `<table width="100%" class="lista
     `;
 
 // Elemento TR que muestra los datos de una persona
-Personas.plantillaFormularioPersona.cuerpo = `         <tr title="${Personas.plantillaFormularioPersona.tags.ID}">
+Personas.plantillaFormularioPersona.cuerpoTabla = `         <tr title="${Personas.plantillaFormularioPersona.tags.ID}">
                             <td><input type="text" class="form-persona-elemento" disabled id="form-persona-id"
                                     value="${Personas.plantillaFormularioPersona.tags.ID}" 
                                     name="id_persona"/></td>
@@ -72,7 +76,7 @@ Personas.plantillaFormularioPersona.cuerpo = `         <tr title="${Personas.pla
     `;
 
 // Pie de la tabla
-Personas.plantillaFormularioPersona.pie = `        </tbody>
+Personas.plantillaFormularioPersona.pieTabla = `        </tbody>
              </table>
              `;
 
@@ -83,7 +87,7 @@ Personas.plantillaFormularioPersona.pie = `        </tbody>
      */
 Personas.plantillaFormularioPersona.actualiza = function (persona) {
     // Utilizo expresiones regulares con el modificador 'g' para que cambie todas las apariciones de cada tag
-    return this.cuerpo
+    return this.cuerpoTabla
         .replace(new RegExp(this.tags.ID, 'g'), persona.ref['@ref'].id)
         .replace(new RegExp(this.tags.NOMBRE, 'g'), persona.data.nombre)
         .replace(new RegExp(this.tags.APELLIDOS, 'g'), persona.data.apellidos)
@@ -145,10 +149,22 @@ Personas.recuperaUnaPersona = async function (idPersona, callBackFn) {
  * @param {persona} Persona Objeto con los datos de la persona
  * @returns Una cadena con la tabla que tiene ya los datos actualizados
  */
-Personas.personaComoTable = function (persona) {
-    return Personas.plantillaFormularioPersona.cabecera
+Personas.personaComoTabla = function (persona) {
+    return Personas.plantillaFormularioPersona.cabeceraTabla
         + Personas.plantillaFormularioPersona.actualiza(persona)
-        + Personas.plantillaFormularioPersona.pie;
+        + Personas.plantillaFormularioPersona.pieTabla;
+}
+
+
+/**
+ * Imprime los datos de una persona como una tabla dentro de un formulario usando la plantilla del formulario.
+ * @param {persona} Persona Objeto con los datos de la persona
+ * @returns Una cadena con la tabla que tiene ya los datos actualizados
+ */
+Personas.personaComoFormulario = function (persona) {
+    return Personas.plantillaFormularioPersona.cabeceraFormulario
+        + Personas.personaComoTabla( persona )
+        + Personas.plantillaFormularioPersona.pieFormulario;
 }
 
 
@@ -161,9 +177,9 @@ Personas.imprimeMuchasPersonas = function (vector) {
     // console.log(vector) // Para comprobar lo que hay en vector
 
     // Compongo el contenido que se va a mostrar dentro de la tabla
-    let msj = Personas.plantillaFormularioPersona.cabecera
+    let msj = Personas.plantillaFormularioPersona.cabeceraTabla
     vector.forEach(e => msj += Personas.plantillaFormularioPersona.actualiza(e))
-    msj += Personas.plantillaFormularioPersona.pie
+    msj += Personas.plantillaFormularioPersona.pieTabla
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Listado de personas", msj)
@@ -176,7 +192,7 @@ Personas.imprimeMuchasPersonas = function (vector) {
 
 Personas.imprimeUnaPersona = function (persona) {
     // console.log(persona) // Para comprobar lo que hay en vector
-    let msj = Personas.personaComoTable(persona);
+    let msj = Personas.personaComoFormulario(persona);
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Mostrar una persona", msj)
