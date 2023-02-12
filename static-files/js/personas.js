@@ -48,16 +48,21 @@ Personas.plantillaFormularioPersona.cabecera = `<table width="100%" class="lista
 // Elemento TR que muestra los datos de una persona
 Personas.plantillaFormularioPersona.cuerpo = `         <tr title="${Personas.plantillaFormularioPersona.tags.ID}">
                             <td><input type="text" class="form-persona-elemento" disabled id="form-persona-id"
-                                    value="${Personas.plantillaFormularioPersona.tags.ID}" /></td>
+                                    value="${Personas.plantillaFormularioPersona.tags.ID}" 
+                                    name="id_persona"/></td>
                             <td><input type="text" class="form-persona-elemento editable" disabled
-                                    id="form-persona-nombre" required value="${Personas.plantillaFormularioPersona.tags.NOMBRE}" /></td>
+                                    id="form-persona-nombre" required value="${Personas.plantillaFormularioPersona.tags.NOMBRE}" 
+                                    name="nombre_persona"/></td>
                             <td><input type="text" class="form-persona-elemento editable" disabled
-                                    id="form-persona-apellidos" value="### APELLIDOS ###" /></td>
+                                    id="form-persona-apellidos" value="### APELLIDOS ###" 
+                                    name="apellidos_persona"/></td>
                             <td><input type="email" class="form-persona-elemento editable" disabled
-                                    id="form-persona-email" required value="### EMAIL ###" /></td>
+                                    id="form-persona-email" required value="### EMAIL ###" 
+                                    name="email_persona"/></td>
                             <td><input type="number" class="form-persona-elemento editable" disabled
                                     id="form-persona-anio" min="1950" max="2030" size="8" required
-                                    value="### AÑO ENTRADA ###" /></td>
+                                    value="### AÑO ENTRADA ###" 
+                                    name="año_entrada_persona"/></td>
                             <td>
                                 <div><a href="javascript:Personas.editar()" class="opcion-secundaria mostrar">Editar</a></div>
                                 <div><a href="javascript:Personas.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
