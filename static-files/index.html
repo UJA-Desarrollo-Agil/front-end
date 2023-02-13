@@ -24,7 +24,7 @@
     -->
 
     <!-- Cargamos nuestros CSS -->
-    <link rel="stylesheet" href="css/personas-proyectos.css">
+    <link rel="stylesheet" href="css/front-end.css">
 
 
 </head>
@@ -33,14 +33,14 @@
     <h1>Aplicación Personas-Proyectos</h1>
     <!-- Barra de navegación de la aplicación -->
     <nav>
-        <a href="javascript:Personas.listar()" class="menu-opcion-principal"
+        <a href="javascript:Personas.listar()" class="opcion-principal mostrar"
             title="Realiza un listado de todas las personas que hay en la BBDD">Listar personas</a>
-        <a href="javascript:Proyectos.listar()" class="menu-opcion-principal"
+        <a href="javascript:Proyectos.listar()" class="opcion-principal mostrar"
             title="Realiza un listado de todas los proyectos que hay en la BBDD">Listar proyectos</a>
-        <a href="javascript:Proyectos.listarConPersonas()" class="menu-opcion-principal"
+        <a href="javascript:Proyectos.listarConPersonas()" class="opcion-principal mostrar"
             title="Realiza un listado de todas los proyectos que hay en la BBDD mostrando también las personas asignadas a cada proyecto">
             Listar proyectos con personas</a>
-        <a href="javascript:Personas.mostrar('354047536357441750')" class="menu-opcion-principal"
+        <a href="javascript:Personas.mostrar('354047536357441750')" class="opcion-principal mostrar"
             title="Muestra los datos de una persona como ejemplo">Mostrar una persona de ejemplo</a>
     </nav>
 
@@ -52,7 +52,9 @@
         <!-- Título del article -->
         <h2 id="seccion-principal-titulo"></h2>
         <!-- Contenido del article -->
-        <div id="seccion-principal-contenido"></div>
+        <div id="seccion-principal-contenido">
+            <div id="tabla-formulario-persona" class="ocultar"></div>
+        </div>
     </article>
 </body>
 

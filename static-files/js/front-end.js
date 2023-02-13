@@ -115,6 +115,43 @@ Frontend.aniadirClase = function (idElemento, nombreClase) {
     return this;
 }
 
+
+
+/**
+ * Quita a un elemento del cual se pasa él mismo o su ID la clase indicada por nombreClase
+ * @param {string} elemento Elemento o id del elemento
+ * @param {string} nombreClase Nombre de la clase a quitar
+ */
+Frontend.quitarClase = function (elemento, nombreClase) {
+    elemento = (typeof elemento==="string")? document.getElementById(elemento) : elemento;
+    let clase = elemento.getAttribute("class")
+    clase = clase.split(" ") // Separo la cadena por " "
+        .filter(e => e) // Quito las cadenas vacías que pudiera haber
+        .filter(e => e != nombreClase) // Quito la cadena indicada por nombreClase
+        .join(" ") // creo una sola cadena con todas las clases separadas por espacios
+    elemento.setAttribute("class", clase)
+
+    return this;
+}
+
+/**
+ * Añade a un elemento del cual se pasa él mismo o su ID la clase indicada por nombreClase
+ * @param {string} elemento Elemento o id del elemento
+ * @param {string} nombreClase Nombre de la clase a quitar
+ */
+Frontend.aniadirClase = function (elemento, nombreClase) {
+    elemento = (typeof elemento==="string")? document.getElementById(elemento) : elemento;
+    let clase = elemento.getAttribute("class")
+    clase = clase.split(" ") // Separo la cadena por " "
+        .filter(e => e) // Quito las cadenas vacías que pudiera haber
+        .filter(e => e != nombreClase) // Quito la cadena indicada por nombreClase, por si ya estuviera
+        .concat(nombreClase) // Añado la clase indicada en nombreClase
+        .join(" ") // creo una sola cadena con todas las clases separadas por espacios
+    elemento.setAttribute("class", clase)
+
+    return this;
+}
+
 /**
  * Muestro el article
  * @returns El propio Article para poder concatenar llamadas
