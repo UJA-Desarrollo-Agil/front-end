@@ -79,10 +79,12 @@ Personas.plantillaTablaPersonas = {}
 Personas.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-personas">
                     <thead>
                         <th width="10%">Id</th>
-                        <th width="30%">Nombre</th>
-                        <th width="30%">Apellidos</th>
-                        <th width="15%">eMail</th>
+                        <th width="20%">Nombre</th>
+                        <th width="20%">Apellidos</th>
+                        <th width="10%">eMail</th>
                         <th width="15%">Año contratación</th>
+                        <th width="15%">Acciones</th>
+
                     </thead>
                     <tbody>
     `;
@@ -95,6 +97,9 @@ Personas.plantillaTablaPersonas.cuerpo = `
         <td>${Personas.plantillaTags.APELLIDOS}</td>
         <td>${Personas.plantillaTags.EMAIL}</td>
         <td>${Personas.plantillaTags["AÑO ENTRADA"]}</td>
+        <td>
+                    <div><a href="javascript:Personas.mostrar('${Personas.plantillaTags.ID}')" class="opcion-secundaria mostrar">Mostrar</a></div>
+        </td>
     </tr>
     `;
 
