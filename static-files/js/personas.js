@@ -32,7 +32,7 @@ Personas.plantillaFormularioPersona.tags = {
     "AÑO ENTRADA": "### AÑO ENTRADA ###",
 }
 // Cabecera del formulario
-Personas.plantillaFormularioPersona.cabeceraFormulario = `<form method='post' action='javascript:Personas.enviarFormulario()'>`;
+Personas.plantillaFormularioPersona.cabeceraFormulario = `<form method='post' action=''>`;
 // Pie del formulario
 Personas.plantillaFormularioPersona.pieFormulario = `</form>`;
 
@@ -163,7 +163,7 @@ Personas.personaComoTabla = function (persona) {
  */
 Personas.personaComoFormulario = function (persona) {
     return Personas.plantillaFormularioPersona.cabeceraFormulario
-        + Personas.personaComoTabla( persona )
+        + Personas.personaComoTabla(persona)
         + Personas.plantillaFormularioPersona.pieFormulario;
 }
 
@@ -343,6 +343,46 @@ Personas.cancelar = function () {
     this.deshabilitarCamposEditables()
     this.ocultarOcionesTerciariasEditar()
     this.mostrarOpcionesSecundarias()
+}
+
+
+/**
+ * Función para guardar los nuevos datos de una persona
+ */
+Personas.guardar = async function () {
+    try {
+        let url = Frontend.API_GATEWAY + "/personas/setTodo/"
+        let id_persona =  document.getElementById("form-persona-id").value
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'no-cors', // no-cors, cors, *same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'omit', // include, *same-origin, omit
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrer: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify({
+                "id_persona": id_persona,
+                "nombre_persona": document.getElementById("form-persona-nombre").value,
+                "apellidos_persona": document.getElementById("form-persona-apellidos").value,
+                "email_persona": document.getElementById("form-persona-email").value,
+                "año_entrada_persona": document.getElementById("form-persona-anio").value
+            }), // body data type must match "Content-Type" header
+        })
+        /*
+        Error: No procesa bien la respuesta devuelta
+        if (response) {
+            const persona = await response.json()
+            alert(persona)
+        }
+        */
+        Personas.mostrar( id_persona )
+    } catch (error) {
+        alert("Error: No se han podido acceder al API Gateway " + error)
+        //console.error(error)
+    }
 }
 
 
