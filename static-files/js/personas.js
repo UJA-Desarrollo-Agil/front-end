@@ -21,80 +21,121 @@ Personas.form = {
 /// Objeto para almacenar los datos de la persona que se está mostrando
 Personas.personaMostrada = null
 
-/// Plantilla para poner los datos de una persona en un TR
-Personas.plantillaFormularioPersona = {}
 // Tags que voy a usar para sustituir los campos
-Personas.plantillaFormularioPersona.tags = {
+Personas.plantillaTags = {
     "ID": "### ID ###",
     "NOMBRE": "### NOMBRE ###",
     "APELLIDOS": "### APELLIDOS ###",
     "EMAIL": "### EMAIL ###",
     "AÑO ENTRADA": "### AÑO ENTRADA ###",
 }
+/// Plantilla para poner los datos de una persona en un tabla dentro de un formulario
+Personas.plantillaFormularioPersona = {}
+
+
 // Cabecera del formulario
-Personas.plantillaFormularioPersona.cabeceraFormulario = `<form method='post' action=''>`;
-// Pie del formulario
-Personas.plantillaFormularioPersona.pieFormulario = `</form>`;
+Personas.plantillaFormularioPersona.formulario = `
+<form method='post' action=''>
+    <table width="100%" class="listado-personas">
+        <thead>
+            <th width="10%">Id</th><th width="20%">Nombre</th><th width="20%">Apellidos</th><th width="10%">eMail</th>
+            <th width="15%">Año contratación</th><th width="25%">Acciones</th>
+        </thead>
+        <tbody>
+            <tr title="${Personas.plantillaTags.ID}">
+                <td><input type="text" class="form-persona-elemento" disabled id="form-persona-id"
+                        value="${Personas.plantillaTags.ID}" 
+                        name="id_persona"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-nombre" required value="${Personas.plantillaTags.NOMBRE}" 
+                        name="nombre_persona"/></td>
+                <td><input type="text" class="form-persona-elemento editable" disabled
+                        id="form-persona-apellidos" value="${Personas.plantillaTags.APELLIDOS}" 
+                        name="apellidos_persona"/></td>
+                <td><input type="email" class="form-persona-elemento editable" disabled
+                        id="form-persona-email" required value="${Personas.plantillaTags.EMAIL}" 
+                        name="email_persona"/></td>
+                <td><input type="number" class="form-persona-elemento editable" disabled
+                        id="form-persona-anio" min="1950" max="2030" size="8" required
+                        value="${Personas.plantillaTags["AÑO ENTRADA"]}" 
+                        name="año_entrada_persona"/></td>
+                <td>
+                    <div><a href="javascript:Personas.editar()" class="opcion-secundaria mostrar">Editar</a></div>
+                    <div><a href="javascript:Personas.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
+                    <div><a href="javascript:Personas.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+`;
+
+
+/// Plantilla para poner los datos de varias personas dentro de una tabla
+Personas.plantillaTablaPersonas = {}
+
 
 // Cabecera de la tabla
-Personas.plantillaFormularioPersona.cabeceraTabla = `<table width="100%" class="listado-personas">
+Personas.plantillaTablaPersonas.cabecera = `<table width="100%" class="listado-personas">
                     <thead>
                         <th width="10%">Id</th>
-                        <th width="20%">Nombre</th>
-                        <th width="20%">Apellidos</th>
-                        <th width="10%">eMail</th>
+                        <th width="30%">Nombre</th>
+                        <th width="30%">Apellidos</th>
+                        <th width="15%">eMail</th>
                         <th width="15%">Año contratación</th>
-                        <th width="25%">Acciones</th>
                     </thead>
                     <tbody>
     `;
 
 // Elemento TR que muestra los datos de una persona
-Personas.plantillaFormularioPersona.cuerpoTabla = `         <tr title="${Personas.plantillaFormularioPersona.tags.ID}">
-                            <td><input type="text" class="form-persona-elemento" disabled id="form-persona-id"
-                                    value="${Personas.plantillaFormularioPersona.tags.ID}" 
-                                    name="id_persona"/></td>
-                            <td><input type="text" class="form-persona-elemento editable" disabled
-                                    id="form-persona-nombre" required value="${Personas.plantillaFormularioPersona.tags.NOMBRE}" 
-                                    name="nombre_persona"/></td>
-                            <td><input type="text" class="form-persona-elemento editable" disabled
-                                    id="form-persona-apellidos" value="### APELLIDOS ###" 
-                                    name="apellidos_persona"/></td>
-                            <td><input type="email" class="form-persona-elemento editable" disabled
-                                    id="form-persona-email" required value="### EMAIL ###" 
-                                    name="email_persona"/></td>
-                            <td><input type="number" class="form-persona-elemento editable" disabled
-                                    id="form-persona-anio" min="1950" max="2030" size="8" required
-                                    value="### AÑO ENTRADA ###" 
-                                    name="año_entrada_persona"/></td>
-                            <td>
-                                <div><a href="javascript:Personas.editar()" class="opcion-secundaria mostrar">Editar</a></div>
-                                <div><a href="javascript:Personas.guardar()" class="opcion-terciaria editar ocultar">Guardar</a></div>
-                                <div><a href="javascript:Personas.cancelar()" class="opcion-terciaria editar ocultar">Cancelar</a></div>
-                            </td>
-                        </tr>
+Personas.plantillaTablaPersonas.cuerpo = `
+    <tr title="${Personas.plantillaTags.ID}">
+        <td>${Personas.plantillaTags.ID}</td>
+        <td>${Personas.plantillaTags.NOMBRE}</td>
+        <td>${Personas.plantillaTags.APELLIDOS}</td>
+        <td>${Personas.plantillaTags.EMAIL}</td>
+        <td>${Personas.plantillaTags["AÑO ENTRADA"]}</td>
+    </tr>
     `;
 
 // Pie de la tabla
-Personas.plantillaFormularioPersona.pieTabla = `        </tbody>
+Personas.plantillaTablaPersonas.pie = `        </tbody>
              </table>
              `;
 
+
 /**
-     * Actualiza el cuerpo de la plantilla con los datos de la persona que se le pasa
-     * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
-     * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
-     */
-Personas.plantillaFormularioPersona.actualiza = function (persona) {
-    // Utilizo expresiones regulares con el modificador 'g' para que cambie todas las apariciones de cada tag
-    return this.cuerpoTabla
-        .replace(new RegExp(this.tags.ID, 'g'), persona.ref['@ref'].id)
-        .replace(new RegExp(this.tags.NOMBRE, 'g'), persona.data.nombre)
-        .replace(new RegExp(this.tags.APELLIDOS, 'g'), persona.data.apellidos)
-        .replace(new RegExp(this.tags.EMAIL, 'g'), persona.data.email)
-        .replace(new RegExp(this.tags["AÑO ENTRADA"], 'g'), persona.data.año_entrada)
+ * Actualiza el cuerpo de la plantilla deseada con los datos de la persona que se le pasa
+ * @param {String} Plantilla Cadena conteniendo HTML en la que se desea cambiar lso campos de la plantilla por datos
+ * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */           
+Personas.sustituyeTags = function (plantilla, persona) {
+    return plantilla
+        .replace(new RegExp(Personas.plantillaTags.ID, 'g'), persona.ref['@ref'].id)
+        .replace(new RegExp(Personas.plantillaTags.NOMBRE, 'g'), persona.data.nombre)
+        .replace(new RegExp(Personas.plantillaTags.APELLIDOS, 'g'), persona.data.apellidos)
+        .replace(new RegExp(Personas.plantillaTags.EMAIL, 'g'), persona.data.email)
+        .replace(new RegExp(Personas.plantillaTags["AÑO ENTRADA"], 'g'), persona.data.año_entrada)
 }
 
+/**
+ * Actualiza el cuerpo de la tabla con los datos de la persona que se le pasa
+ * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */
+Personas.plantillaTablaPersonas.actualiza = function (persona) {
+    return Personas.sustituyeTags(this.cuerpo, persona)
+}
+
+/**
+ * Actualiza el formulario con los datos de la persona que se le pasa
+ * @param {Persona} Persona Objeto con los datos de la persona que queremos escribir en el TR
+ * @returns La plantilla del cuerpo de la tabla con los datos actualizados 
+ */
+Personas.plantillaFormularioPersona.actualiza = function (persona) {
+    return Personas.sustituyeTags(this.formulario, persona)
+}
 
 /**
  * Función que recuperar todas las personas llamando al MS Personas
@@ -150,9 +191,9 @@ Personas.recuperaUnaPersona = async function (idPersona, callBackFn) {
  * @returns Una cadena con la tabla que tiene ya los datos actualizados
  */
 Personas.personaComoTabla = function (persona) {
-    return Personas.plantillaFormularioPersona.cabeceraTabla
-        + Personas.plantillaFormularioPersona.actualiza(persona)
-        + Personas.plantillaFormularioPersona.pieTabla;
+    return Personas.plantillaTablaPersonas.cabecera
+        + Personas.plantillaTablaPersonas.actualiza(persona)
+        + Personas.plantillaTablaPersonas.pie;
 }
 
 
@@ -162,9 +203,7 @@ Personas.personaComoTabla = function (persona) {
  * @returns Una cadena con la tabla que tiene ya los datos actualizados
  */
 Personas.personaComoFormulario = function (persona) {
-    return Personas.plantillaFormularioPersona.cabeceraFormulario
-        + Personas.personaComoTabla(persona)
-        + Personas.plantillaFormularioPersona.pieFormulario;
+    return Personas.plantillaFormularioPersona.actualiza( persona );
 }
 
 
@@ -177,9 +216,9 @@ Personas.imprimeMuchasPersonas = function (vector) {
     // console.log(vector) // Para comprobar lo que hay en vector
 
     // Compongo el contenido que se va a mostrar dentro de la tabla
-    let msj = Personas.plantillaFormularioPersona.cabeceraTabla
-    vector.forEach(e => msj += Personas.plantillaFormularioPersona.actualiza(e))
-    msj += Personas.plantillaFormularioPersona.pieTabla
+    let msj = Personas.plantillaTablaPersonas.cabecera
+    vector.forEach(e => msj += Personas.plantillaTablaPersonas.actualiza(e))
+    msj += Personas.plantillaTablaPersonas.pie
 
     // Borro toda la info de Article y la sustituyo por la que me interesa
     Frontend.Article.actualizar("Listado de personas", msj)
@@ -352,7 +391,7 @@ Personas.cancelar = function () {
 Personas.guardar = async function () {
     try {
         let url = Frontend.API_GATEWAY + "/personas/setTodo/"
-        let id_persona =  document.getElementById("form-persona-id").value
+        let id_persona = document.getElementById("form-persona-id").value
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'no-cors', // no-cors, cors, *same-origin
@@ -378,7 +417,7 @@ Personas.guardar = async function () {
             alert(persona)
         }
         */
-        Personas.mostrar( id_persona )
+        Personas.mostrar(id_persona)
     } catch (error) {
         alert("Error: No se han podido acceder al API Gateway " + error)
         //console.error(error)
