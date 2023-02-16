@@ -1,3 +1,10 @@
+/**
+ * @file front-end.css
+ * @description Estilos aplicables a elementos comunes de la aplicación Front-end
+ * @author Víctor M. Rivas Santos <vrivas@ujaen.es>
+ * @date 03-Feb-2023
+ */
+
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('./personas.css');
 @import url('./proyectos.css');

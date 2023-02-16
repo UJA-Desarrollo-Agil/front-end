@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+/**
+ * @file personas.css
+ * @description Estilos aplicables a la visualización de elementos relacionados con el MS Personas
+ * @author Víctor M. Rivas Santos <vrivas@ujaen.es>
+ * @date 03-Feb-2023
+ */
+ @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 * {
     font-family: 'Source Sans Pro', sans-serif;
