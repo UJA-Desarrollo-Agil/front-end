@@ -53,7 +53,7 @@ describe("cuerpoConPersonasTr ", function () {
     let p = { data: d }
 
     // Realizo los expect
-    it("debería una fila de tabla con los datos de un proyecto con personas asociadas",
+    it("debería devolver una fila de tabla con los datos de un proyecto con personas asociadas",
         function () {
             let msj = Proyectos.cuerpoConPersonasTr(p)
             expect(msj.includes(d.inicio.dia)).toBeTrue();
