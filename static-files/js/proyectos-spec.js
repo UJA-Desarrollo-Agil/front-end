@@ -17,37 +17,38 @@ describe("Pie table ", function () {
 describe("cuerpoConPersonasTr ", function () {
 
     // Preparo los datos
-    let d = {}
-    d.inicio = { dia: 123, mes: 245, año: 3024 }
-    d.final = { dia: 467, mes: 589, año: 6023 }
-    d.presupuesto = 1000
-    d.alias = "el alias del proyecto"
-    d.nombre = "el nombre del proyecto"
-    d.datos_personas = [
-        {
-            ref: {
-                "@ref": {
-                    id: "ref persona 1"
+    let d = {
+        inicio: { dia: 123, mes: 245, año: 3024 }
+        , final: { dia: 467, mes: 589, año: 6023 }
+        , presupuesto: 1000
+        , alias: "el alias del proyecto"
+        , nombre: "el nombre del proyecto"
+        , datos_personas: [
+            {
+                ref: {
+                    "@ref": {
+                        id: "ref persona 1"
+                    }
+                },
+                data: {
+                    nombre: "Nombre persona 1",
+                    apellidos: "Apellidos persona 1"
                 }
             },
-            data: {
-                nombre: "Nombre persona 1",
-                apellidos: "Apellidos persona 1"
-            }
-        },
-        {
-            ref: {
-                "@ref": {
-                    id: "ref persona 2"
+            {
+                ref: {
+                    "@ref": {
+                        id: "ref persona 2"
+                    }
+                },
+                data: {
+                    nombre: "Nombre persona 2",
+                    apellidos: "Apellidos persona 2"
                 }
             },
-            data: {
-                nombre: "Nombre persona 2",
-                apellidos: "Apellidos persona 2"
-            }
-        },
 
-    ]
+        ]
+    }
 
     let p = { data: d }
 
