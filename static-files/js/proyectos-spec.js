@@ -5,10 +5,11 @@
  * @date 03-feb-2023
  */
 
+
 // SPECS para Jasmine
-describe("MAIN", function () {
-    it("main debería devolver true",
+describe("Pie table ", function () {
+    it("debería devolver las etiquetas HTML para el pie de tabla",
         function () {
-            expect(main()).toBeTrue();
+            expect(Proyectos.pieTable()).toBe("</tbody></table>");
         });
 });
