@@ -30,4 +30,45 @@ describe('Servidor Front-End:', () => {
         })
         .end((error) => { error ? done.fail(error) : done() })
     });
+
+    it('Cualquier otra ruta, como : /patata/consome/zanahoria también index.html', (done) => {
+      supertest(app)
+        .get('/patata/consome/zanahoria')
+        .expect(200)
+        .expect('Content-Type', /html/)
+        .expect(function (res) {
+          //console.log( res.text ); // Para comprobar qué contiene exactamente res.text
+          assert(res.text.includes('<h1>Aplicación Personas-Proyectos</h1>'));
+          assert(res.text.includes('<article id="seccion-principal" class="ocultar">'));
+
+        })
+        .end((error) => { error ? done.fail(error) : done() })
+    });
+
+    it('Cualquier otro acceso a html, como : /miperro.html devuelve también index.html', (done) => {
+      supertest(app)
+        .get('/miperro.html')
+        .expect(200)
+        .expect('Content-Type', /html/)
+        .expect(function (res) {
+          //console.log( res.text ); // Para comprobar qué contiene exactamente res.text
+          assert(res.text.includes('<h1>Aplicación Personas-Proyectos</h1>'));
+          assert(res.text.includes('<article id="seccion-principal" class="ocultar">'));
+
+        })
+        .end((error) => { error ? done.fail(error) : done() })
+    });
+    it('Cualquier otro tipo de fichero, como : /assets/img.png devuelve también index.html', (done) => {
+      supertest(app)
+        .get('/miperro.html')
+        .expect(200)
+        .expect('Content-Type', /html/)
+        .expect(function (res) {
+          //console.log( res.text ); // Para comprobar qué contiene exactamente res.text
+          assert(res.text.includes('<h1>Aplicación Personas-Proyectos</h1>'));
+          assert(res.text.includes('<article id="seccion-principal" class="ocultar">'));
+
+        })
+        .end((error) => { error ? done.fail(error) : done() })
+    });
   })
