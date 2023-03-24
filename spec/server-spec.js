@@ -60,7 +60,7 @@ describe('Servidor Front-End:', () => {
     });
     it('Cualquier otro tipo de fichero, como : /assets/img.png devuelve también index.html', (done) => {
       supertest(app)
-        .get('/miperro.html')
+        .get('/assets/img.png')
         .expect(200)
         .expect('Content-Type', /html/)
         .expect(function (res) {
